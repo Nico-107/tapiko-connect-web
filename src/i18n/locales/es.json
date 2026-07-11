@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "how": "Cómo funciona",
+    "product": "Producto",
+    "pricing": "Precios",
+    "examples": "Ejemplos",
+    "contact": "Contacto",
+    "quote": "Pedir presupuesto"
+  },
+  "hero": {
+    "eyebrow": "Barcelona · Objetos NFC a medida",
+    "title_pre": "Objetos que",
+    "title_accent": "reciben",
+    "title_post": "a tus clientes.",
+    "subhead": "Diseñamos e imprimimos en 3D placas NFC hechas a medida para restaurantes, bares y cafeterías. Un toque y cada cliente aterriza justo donde tú quieres: reseñas, redes, carta.",
+    "cta_primary": "Pedir presupuesto",
+    "cta_secondary": "Ver cómo funciona"
+  },
+  "how": {
+    "eyebrow": "Cómo funciona",
+    "title": "Del brief de marca a un toque sobre la barra.",
+    "steps": {
+      "brief": { "title": "Brief", "body": "Estudiamos tu marca, tu paleta y el ambiente del local." },
+      "design": { "title": "Diseño", "body": "Un concepto pensado desde tu identidad. Nada de plantillas." },
+      "print": { "title": "Impresión", "body": "Impreso en 3D con precisión en Barcelona y acabado a mano." },
+      "embed": { "title": "Chip", "body": "Colocamos y programamos los chips NFC: una zona, una acción." }
+    }
+  },
+  "product": {
+    "eyebrow": "El producto",
+    "title": "Un objeto físico que hace el trabajo de todo un stack de marketing.",
+    "body": "Cada placa Tapiko lleva un chip NFC por zona. El cliente acerca el móvil y aterriza exactamente donde quieres. Sin app, sin escaneo, sin fricción.",
+    "specs_label": "Ficha técnica",
+    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Hasta 4 zonas de toque  ·  Diseño totalmente a medida  ·  Plazo 7–14 días"
+  },
+  "pricing": {
+    "eyebrow": "Precios",
+    "title": "Elige la placa que encaja en tu barra.",
+    "note": "El precio final depende de la complejidad del diseño y el volumen. Todos los planes incluyen concepto a medida y producción en Barcelona.",
+    "popular": "Más elegido",
+    "from": "desde",
+    "cta": "Pedir presupuesto",
+    "tiers": {
+      "essential": {
+        "name": "Essential",
+        "zones": "1 zona de toque",
+        "desc": "Placa de una sola acción, perfecta para pedir reseñas en Google.",
+        "features": ["Un chip NFC integrado", "Forma y acabado a medida", "Programado y listo para colocar"]
+      },
+      "signature": {
+        "name": "Signature",
+        "zones": "2 zonas de toque",
+        "desc": "Dos acciones en un mismo objeto: reseñas e Instagram, por ejemplo.",
+        "features": ["Dos chips NFC integrados", "Diseño refinado de doble zona", "Enlaces cortos con analítica"]
+      },
+      "pro": {
+        "name": "Pro",
+        "zones": "3+ zonas de toque",
+        "desc": "La experiencia completa: reseñas, redes, carta y wifi en una sola pieza.",
+        "features": ["Varios chips NFC integrados", "Acabado premium y plazo prioritario", "Destinos editables de por vida"]
+      }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Ejemplos",
+    "title": "Algunas piezas que hemos hecho.",
+    "subtitle": "Cada placa se diseña desde cero. No hay dos iguales.",
+    "items": {
+      "1": "Lumière — bistró en el Eixample",
+      "2": "Santa Eulàlia — Brunch y café",
+      "3": "Marina — restaurante en la Barceloneta",
+      "4": "Sol — Tapas y vermut",
+      "5": "Café Floreta — Eixample",
+      "6": "El Pati — Café y jardín"
+    }
+  },
+  "case": {
+    "eyebrow": "Caso",
+    "title": "Bar Deriva, Barceloneta.",
+    "brief_label": "El brief",
+    "brief": "Un bar de playa pequeño con clientela fiel pero apenas presencia online. Atardeceres cálidos, salitre en el aire, terracota por todas partes.",
+    "solution_label": "La placa",
+    "solution": "Una pieza en terracota atardecer con forma redondeada y dos zonas: dejar reseña en Google o seguir el atardecer en Instagram. Vive al lado de la caja.",
+    "result_label": "El resultado",
+    "result": "Más de 90 nuevas reseñas de cinco estrellas en tres meses y el doble de seguidores en Instagram."
+  },
+  "why": {
+    "eyebrow": "Por qué Tapiko",
+    "title": "No es un QR pegado. Es un objeto real con tu nombre encima.",
+    "items": {
+      "custom": { "title": "Diseño a medida", "body": "Pensado desde tu identidad: color, tipografía, silueta." },
+      "physical": { "title": "Un producto físico de verdad", "body": "Un objeto premium sobre la barra. No un papel que cambiarás el mes que viene." },
+      "results": { "title": "Reseñas y seguidores", "body": "Cada cliente se convierte en un toque que hace crecer tu presencia online." }
+    }
+  },
+  "lead": {
+    "eyebrow": "Contacto",
+    "title": "Cuéntanos sobre tu local.",
+    "subtitle": "Diseñamos un primer concepto para ti. Sin compromiso.",
+    "form": {
+      "name": "Tu nombre",
+      "business": "Nombre del negocio",
+      "email": "Email",
+      "tier": "Plan de interés",
+      "message": "Cuéntanos algo de tu espacio",
+      "submit": "Enviar mensaje",
+      "sent": "Gracias, te escribimos enseguida.",
+      "tier_placeholder": "Elige un plan"
+    },
+    "whatsapp": {
+      "title": "¿Prefieres WhatsApp?",
+      "body": "Escríbenos directamente y te contestamos el mismo día.",
+      "cta": "Abrir WhatsApp"
+    },
+    "call": {
+      "title": "Reserva una llamada de 20 minutos",
+      "body": "Repasamos tu marca y esbozamos una primera idea en directo.",
+      "cta": "Reservar llamada",
+      "placeholder": "[ Espacio para Calendly ]"
+    }
+  },
+  "footer": {
+    "tagline": "Objetos NFC a medida, diseñados e impresos en Barcelona.",
+    "rights": "© 2026 Tapiko · Barcelona",
+    "social": "Síguenos"
+  }
+}

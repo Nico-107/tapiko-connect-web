@@ -1,24 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
+import "@/i18n";
+import { Nav } from "@/components/tapiko/Nav";
+import { Hero } from "@/components/tapiko/Hero";
+import { HowItWorks } from "@/components/tapiko/HowItWorks";
+import { Product } from "@/components/tapiko/Product";
+import { Pricing } from "@/components/tapiko/Pricing";
+import { Gallery } from "@/components/tapiko/Gallery";
+import { CaseStudy } from "@/components/tapiko/CaseStudy";
+import { ValueProps } from "@/components/tapiko/ValueProps";
+import { LeadCapture } from "@/components/tapiko/LeadCapture";
+import { Footer } from "@/components/tapiko/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-[color:var(--paper)] text-[color:var(--ink)]">
+      <Nav />
+      <main>
+        <Hero />
+        <HowItWorks />
+        <Product />
+        <Pricing />
+        <Gallery />
+        <CaseStudy />
+        <ValueProps />
+        <LeadCapture />
+      </main>
+      <Footer />
     </div>
   );
 }

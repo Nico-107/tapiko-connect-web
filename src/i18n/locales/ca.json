@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "how": "Com funciona",
+    "product": "Producte",
+    "pricing": "Preus",
+    "examples": "Exemples",
+    "contact": "Contacte",
+    "quote": "Demana pressupost"
+  },
+  "hero": {
+    "eyebrow": "Barcelona · Objectes NFC a mida",
+    "title_pre": "Objectes que",
+    "title_accent": "reben",
+    "title_post": "els teus clients.",
+    "subhead": "Dissenyem i imprimim en 3D plaques NFC fetes a mida per a restaurants, bars i cafeteries. Un toc i cada client aterra just on tu vols: ressenyes, xarxes, carta.",
+    "cta_primary": "Demana pressupost",
+    "cta_secondary": "Veure com funciona"
+  },
+  "how": {
+    "eyebrow": "Com funciona",
+    "title": "Del brief de marca a un toc sobre la barra.",
+    "steps": {
+      "brief": { "title": "Brief", "body": "Estudiem la teva marca, la paleta i l'ambient del local." },
+      "design": { "title": "Disseny", "body": "Un concepte pensat des de la teva identitat. Res de plantilles." },
+      "print": { "title": "Impressió", "body": "Imprès en 3D amb precisió a Barcelona i acabat a mà." },
+      "embed": { "title": "Xip", "body": "Col·loquem i programem els xips NFC: una zona, una acció." }
+    }
+  },
+  "product": {
+    "eyebrow": "El producte",
+    "title": "Un objecte físic que fa la feina d'un stack de màrqueting sencer.",
+    "body": "Cada placa Tapiko porta un xip NFC per zona. El client acosta el mòbil i aterra exactament on vols. Sense app, sense escaneig, sense fricció.",
+    "specs_label": "Fitxa tècnica",
+    "specs": "Xip NTAG213 / 215  ·  Material PLA / PETG  ·  Fins a 4 zones de toc  ·  Disseny totalment a mida  ·  Termini 7–14 dies"
+  },
+  "pricing": {
+    "eyebrow": "Preus",
+    "title": "Tria la placa que encaixa a la teva barra.",
+    "note": "El preu final depèn de la complexitat del disseny i el volum. Tots els plans inclouen concepte a mida i producció a Barcelona.",
+    "popular": "El més triat",
+    "from": "des de",
+    "cta": "Demana pressupost",
+    "tiers": {
+      "essential": {
+        "name": "Essential",
+        "zones": "1 zona de toc",
+        "desc": "Placa d'una sola acció, perfecta per demanar ressenyes a Google.",
+        "features": ["Un xip NFC integrat", "Forma i acabat a mida", "Programat i llest per col·locar"]
+      },
+      "signature": {
+        "name": "Signature",
+        "zones": "2 zones de toc",
+        "desc": "Dues accions en un mateix objecte: ressenyes i Instagram, per exemple.",
+        "features": ["Dos xips NFC integrats", "Disseny refinat de doble zona", "Enllaços curts amb analítica"]
+      },
+      "pro": {
+        "name": "Pro",
+        "zones": "3+ zones de toc",
+        "desc": "L'experiència completa: ressenyes, xarxes, carta i wifi en una sola peça.",
+        "features": ["Diversos xips NFC integrats", "Acabat premium i termini prioritari", "Destinacions editables per sempre"]
+      }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Exemples",
+    "title": "Algunes peces que hem fet.",
+    "subtitle": "Cada placa es dissenya des de zero. No n'hi ha dues d'iguals.",
+    "items": {
+      "1": "Lumière — bistró a l'Eixample",
+      "2": "Santa Eulàlia — Brunch i cafè",
+      "3": "Marina — restaurant a la Barceloneta",
+      "4": "Sol — Tapes i vermut",
+      "5": "Café Floreta — Eixample",
+      "6": "El Pati — Cafè i jardí"
+    }
+  },
+  "case": {
+    "eyebrow": "Cas",
+    "title": "Bar Deriva, Barceloneta.",
+    "brief_label": "El brief",
+    "brief": "Un bar de platja petit amb clientela fidel però amb prou feines presència online. Postes de sol càlides, aire salat, terracota per tot arreu.",
+    "solution_label": "La placa",
+    "solution": "Una peça en terracota posta de sol, forma arrodonida i dues zones: deixar ressenya a Google o seguir la posta de sol a Instagram. Viu al costat de la caixa.",
+    "result_label": "El resultat",
+    "result": "Més de 90 noves ressenyes de cinc estrelles en tres mesos i el doble de seguidors a Instagram."
+  },
+  "why": {
+    "eyebrow": "Per què Tapiko",
+    "title": "No és un QR enganxat. És un objecte real amb el teu nom a sobre.",
+    "items": {
+      "custom": { "title": "Disseny a mida", "body": "Pensat des de la teva identitat: color, tipografia, silueta." },
+      "physical": { "title": "Un producte físic de veritat", "body": "Un objecte premium sobre la barra. No un paper que canviaràs el mes vinent." },
+      "results": { "title": "Ressenyes i seguidors", "body": "Cada client es converteix en un toc que fa créixer la teva presència online." }
+    }
+  },
+  "lead": {
+    "eyebrow": "Contacte",
+    "title": "Explica'ns el teu local.",
+    "subtitle": "Et dissenyem un primer concepte. Sense compromís.",
+    "form": {
+      "name": "El teu nom",
+      "business": "Nom del negoci",
+      "email": "Correu",
+      "tier": "Pla d'interès",
+      "message": "Explica'ns alguna cosa del teu espai",
+      "submit": "Enviar missatge",
+      "sent": "Gràcies, t'escrivim de seguida.",
+      "tier_placeholder": "Tria un pla"
+    },
+    "whatsapp": {
+      "title": "Prefereixes WhatsApp?",
+      "body": "Escriu-nos directament i et contestem el mateix dia.",
+      "cta": "Obrir WhatsApp"
+    },
+    "call": {
+      "title": "Reserva una trucada de 20 minuts",
+      "body": "Repassem la teva marca i esbossem una primera idea en directe.",
+      "cta": "Reservar trucada",
+      "placeholder": "[ Espai per a Calendly ]"
+    }
+  },
+  "footer": {
+    "tagline": "Objectes NFC a mida, dissenyats i impresos a Barcelona.",
+    "rights": "© 2026 Tapiko · Barcelona",
+    "social": "Segueix-nos"
+  }
+}
