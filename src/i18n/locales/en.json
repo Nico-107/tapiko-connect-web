@@ -1,0 +1,127 @@
+{
+  "nav": {
+    "how": "How it works",
+    "product": "Product",
+    "pricing": "Pricing",
+    "examples": "Examples",
+    "contact": "Contact",
+    "quote": "Get a quote"
+  },
+  "hero": {
+    "eyebrow": "Barcelona · Custom NFC objects",
+    "title_pre": "Objects that",
+    "title_accent": "greet",
+    "title_post": "your customers.",
+    "subhead": "We design and 3D-print bespoke NFC plaques for restaurants, bars and cafés. One tap sends every guest exactly where you want them — reviews, socials, menu.",
+    "cta_primary": "Get a quote",
+    "cta_secondary": "See how it works"
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "From brand brief to a tap on the counter.",
+    "steps": {
+      "brief": { "title": "Brief", "body": "We study your brand, your palette and the vibe of your space." },
+      "design": { "title": "Design", "body": "A concept sketched around your identity — not a template." },
+      "print": { "title": "Print", "body": "Precision 3D-printed in Barcelona, finished by hand." },
+      "embed": { "title": "Embed", "body": "NFC chips placed and programmed — one tap zone per action." }
+    }
+  },
+  "product": {
+    "eyebrow": "The product",
+    "title": "A physical object that does the work of a whole marketing stack.",
+    "body": "Every Tapiko plaque holds one NFC chip per tap zone. Guests hover their phone over a zone and land exactly where you sent them — no app, no scan, no friction.",
+    "specs_label": "Specifications",
+    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Up to 4 tap zones  ·  Fully custom design  ·  Lead time 7–14 days"
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Choose the plaque that fits your counter.",
+    "note": "Final pricing depends on design complexity and volume. All tiers include a custom concept and Barcelona-made production.",
+    "popular": "Most popular",
+    "from": "from",
+    "cta": "Request a quote",
+    "tiers": {
+      "essential": {
+        "name": "Essential",
+        "zones": "1 tap zone",
+        "desc": "A single-action plaque — perfect for driving Google reviews.",
+        "features": ["One embedded NFC chip", "Custom-designed shape & finish", "Programmed & ready to place"]
+      },
+      "signature": {
+        "name": "Signature",
+        "zones": "2 tap zones",
+        "desc": "Two actions on one object — reviews plus Instagram, for example.",
+        "features": ["Two embedded NFC chips", "Refined multi-zone design", "Analytics-friendly short links"]
+      },
+      "pro": {
+        "name": "Pro",
+        "zones": "3+ tap zones",
+        "desc": "The full experience — reviews, socials, menu, wifi, all in one piece.",
+        "features": ["Multiple embedded NFC chips", "Premium finish & priority lead time", "Editable destinations for life"]
+      }
+    }
+  },
+  "gallery": {
+    "eyebrow": "Examples",
+    "title": "A few pieces we've made.",
+    "subtitle": "Every plaque is designed from scratch. No two look alike.",
+    "items": {
+      "1": "Lumière — Eixample bistro",
+      "2": "Santa Eulàlia — Brunch & coffee",
+      "3": "Marina — Barceloneta restaurant",
+      "4": "Sol — Tapas & vermut",
+      "5": "Café Floreta — Eixample",
+      "6": "El Pati — Café & garden"
+    }
+  },
+  "case": {
+    "eyebrow": "Case study",
+    "title": "Bar Deriva, Barceloneta.",
+    "brief_label": "The brief",
+    "brief": "A small beach bar with a devoted regulars scene, but almost no online presence. Warm sunsets, salt in the air, terracotta everywhere.",
+    "solution_label": "The plaque",
+    "solution": "A rounded, sunset-terracotta piece with two tap zones: leave a Google review, or follow the sunset on Instagram. It lives next to the till.",
+    "result_label": "The result",
+    "result": "Over 90 new five-star reviews in three months and a doubled Instagram following."
+  },
+  "why": {
+    "eyebrow": "Why Tapiko",
+    "title": "Not a QR sticker. A real object with your name on it.",
+    "items": {
+      "custom": { "title": "Custom-branded", "body": "Designed around your identity — colour, typography, silhouette." },
+      "physical": { "title": "A real physical product", "body": "A premium object on the counter. Not a paper square you'll replace next month." },
+      "results": { "title": "Drives reviews & followers", "body": "Every guest becomes a tap that grows your online presence." }
+    }
+  },
+  "lead": {
+    "eyebrow": "Contact",
+    "title": "Tell us about your place.",
+    "subtitle": "We'll design a first concept for you — no commitment.",
+    "form": {
+      "name": "Your name",
+      "business": "Business name",
+      "email": "Email",
+      "tier": "Interested tier",
+      "message": "Tell us about your space",
+      "submit": "Send message",
+      "sent": "Thanks — we'll be in touch shortly.",
+      "tier_placeholder": "Choose a tier"
+    },
+    "whatsapp": {
+      "title": "Prefer WhatsApp?",
+      "body": "Message us directly and we'll reply within the day.",
+      "cta": "Open WhatsApp"
+    },
+    "call": {
+      "title": "Book a 20-minute call",
+      "body": "We'll walk through your brand and sketch a first idea live.",
+      "cta": "Book a call",
+      "placeholder": "[ Calendly embed slot ]"
+    }
+  },
+  "footer": {
+    "tagline": "Custom NFC objects, designed and printed in Barcelona.",
+    "rights": "© 2026 Tapiko · Barcelona",
+    "social": "Follow along"
+  }
+}
