@@ -190,7 +190,7 @@
 
 @keyframes float-slow {
   0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50% { transform: translateY(-14px) rotate(0.5deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
 }
 
 @utility animate-float {

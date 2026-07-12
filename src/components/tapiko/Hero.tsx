@@ -6,9 +6,24 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24 lg:min-h-[92vh] lg:pb-32"
+      className="relative overflow-x-hidden pt-32 pb-16 sm:pt-40 sm:pb-24 lg:min-h-[92vh] lg:pb-32"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:px-10">
+      {/* NFC wave / ripple motif — 4 concentric arcs, aria-hidden, purely decorative */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute left-[-6rem] top-[12%] -z-10 w-[min(72vw,640px)] text-[color:var(--terra)]"
+        viewBox="0 0 640 640"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="60" cy="320" r="120" stroke="currentColor" strokeWidth="1.5" opacity="0.07" />
+        <circle cx="60" cy="320" r="220" stroke="currentColor" strokeWidth="1.5" opacity="0.06" />
+        <circle cx="60" cy="320" r="320" stroke="currentColor" strokeWidth="1.5" opacity="0.05" />
+        <circle cx="60" cy="320" r="420" stroke="currentColor" strokeWidth="1.5" opacity="0.04" />
+      </svg>
+
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10 lg:px-10">
+        {/* Text column */}
         <div className="max-w-2xl">
           <p className="eyebrow mb-6">{t("hero.eyebrow")}</p>
           <h1 className="text-[clamp(2.6rem,6vw,5.25rem)] font-medium leading-[1.02] text-[color:var(--ink)]">
@@ -38,10 +53,33 @@ export function Hero() {
               {t("hero.cta_secondary")}
             </a>
           </div>
+          {/* Reassurance line */}
+          <p
+            className="mt-5 text-[11px] tracking-wide text-[color:var(--graphite)]/55"
+            style={{ fontFamily: "var(--font-mono)" }}
+          >
+            Designed & 3D-printed in Barcelona · Custom to your brand
+          </p>
         </div>
 
-        {/* HERO 3D SLOT — interactive model to be integrated here. */}
-        <Hero3D />
+        {/* Product image — dominant column, bleeds slightly past container on desktop */}
+        <div className="lg:-mr-[4vw]">
+          <Hero3D />
+        </div>
+      </div>
+
+      {/* Scroll cue — desktop only */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 opacity-35 lg:flex"
+      >
+        <span
+          className="text-[10px] uppercase tracking-[0.2em] text-[color:var(--graphite)]"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          Scroll
+        </span>
+        <div className="h-8 w-px bg-[color:var(--graphite)]" />
       </div>
     </section>
   );
