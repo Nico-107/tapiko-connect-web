@@ -9,12 +9,39 @@
   },
   "hero": {
     "eyebrow": "Barcelona · Objectes NFC a mida",
-    "title_pre": "Objectes que",
-    "title_accent": "reben",
-    "title_post": "els teus clients.",
-    "subhead": "Dissenyem i imprimim en 3D plaques NFC fetes a mida per a restaurants, bars i cafeteries. Un toc i cada client aterra just on tu vols: ressenyes, xarxes, carta.",
+    "title_pre": "Converteix cada client en una",
+    "title_accent": "ressenya",
+    "title_post": "de cinc estrelles.",
+    "subhead": "Plaques NFC a mida, dissenyades i impreses en 3D a Barcelona per a restaurants, bars i cafeteries. Un toc i cada client aterra exactament on tu vols: ressenyes, xarxes, carta. Sense app, sense QR, sense fricció.",
     "cta_primary": "Demana pressupost",
     "cta_secondary": "Veure com funciona"
+  },
+  "proof": {
+    "title": "Ens trien els millors locals de Barcelona",
+    "logos": {
+      "l1": "Deriva",
+      "l2": "Kalma",
+      "l3": "Casa Vermut",
+      "l4": "Noctámbula",
+      "l5": "Verd"
+    },
+    "testimonials": {
+      "t1": {
+        "quote": "Vam triplicar les ressenyes de Google el primer mes. Als clients els encanta que sigui un objecte de veritat, no un adhesiu amb QR.",
+        "name": "Marta Puig",
+        "role": "Propietària · Bar Deriva"
+      },
+      "t2": {
+        "quote": "Viu a la barra com una peça més de la marca. Ningú pregunta què és: només toquen.",
+        "name": "Iván Ruiz",
+        "role": "Fundador · Kalma Roasters"
+      },
+      "t3": {
+        "quote": "El disseny ens encaixava des del primer esbós. Val cada euro.",
+        "name": "Clara Ferrer",
+        "role": "Encarregada · Verd Brunch"
+      }
+    }
   },
   "how": {
     "eyebrow": "Com funciona",
@@ -36,28 +63,38 @@
   "pricing": {
     "eyebrow": "Preus",
     "title": "Tria la placa que encaixa a la teva barra.",
-    "note": "El preu final depèn de la complexitat del disseny i el volum. Tots els plans inclouen concepte a mida i producció a Barcelona.",
+    "note": "El preu final depèn de la complexitat del disseny i el volum. Diversos locals? Pregunta'ns pel preu de cadena.",
     "popular": "El més triat",
     "from": "des de",
     "cta": "Demana pressupost",
+    "plus": {
+      "eyebrow": "Complement opcional",
+      "name": "Tapiko Plus",
+      "desc": "Canvia els destins de cada toc quan vulguis — substitueix un enllaç de ressenyes per una promo de temporada — més analítica de tocs i suport prioritari.",
+      "note": "Per local · cancel·la quan vulguis"
+    },
+    "chain": {
+      "title": "Grup de restauració o diversos locals? Pressupost personalitzat.",
+      "cta": "Parlem"
+    },
     "tiers": {
       "essential": {
         "name": "Essential",
         "zones": "1 zona de toc",
-        "desc": "Placa d'una sola acció, perfecta per demanar ressenyes a Google.",
+        "desc": "Una placa a mida, una acció NFC. Perfecta per demanar ressenyes a Google.",
         "features": ["Un xip NFC integrat", "Forma i acabat a mida", "Programat i llest per col·locar"]
       },
       "signature": {
         "name": "Signature",
         "zones": "2 zones de toc",
-        "desc": "Dues accions en un mateix objecte: ressenyes i Instagram, per exemple.",
+        "desc": "Dues accions en un mateix objecte: ressenyes i Instagram, per exemple. Disseny completament a mida.",
         "features": ["Dos xips NFC integrats", "Disseny refinat de doble zona", "Enllaços curts amb analítica"]
       },
       "pro": {
         "name": "Pro",
-        "zones": "3+ zones de toc",
-        "desc": "L'experiència completa: ressenyes, xarxes, carta i wifi en una sola peça.",
-        "features": ["Diversos xips NFC integrats", "Acabat premium i termini prioritari", "Destinacions editables per sempre"]
+        "zones": "3 zones de toc",
+        "desc": "Placa multi-acció: ressenyes, xarxes i carta. Acabat premium i termini prioritari.",
+        "features": ["Tres xips NFC integrats", "Acabat premium i termini prioritari", "Destinacions editables per sempre"]
       }
     }
   },
@@ -66,12 +103,12 @@
     "title": "Algunes peces que hem fet.",
     "subtitle": "Cada placa es dissenya des de zero. No n'hi ha dues d'iguals.",
     "items": {
-      "1": "Lumière — bistró a l'Eixample",
-      "2": "Santa Eulàlia — Brunch i cafè",
-      "3": "Marina — restaurant a la Barceloneta",
-      "4": "Sol — Tapes i vermut",
-      "5": "Café Floreta — Eixample",
-      "6": "El Pati — Cafè i jardí"
+      "deriva": "Bar Deriva — ressenyes + Instagram",
+      "coffee": "Kalma Roasters — ressenyes + carta",
+      "tapas": "Casa Vermut — ressenyes + wifi + carta",
+      "cocktail": "Noctámbula — Instagram + coctelería",
+      "brunch": "Verd Brunch — ressenyes + Instagram",
+      "pizza": "Nonna Pina — ressenyes + delivery"
     }
   },
   "case": {
@@ -117,6 +154,32 @@
       "body": "Repassem la teva marca i esbossem una primera idea en directe.",
       "cta": "Reservar trucada",
       "placeholder": "[ Espai per a Calendly ]"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Tot el que potser et preguntes.",
+    "items": {
+      "how": {
+        "q": "Com funciona el NFC?",
+        "a": "Cada zona de toc porta un petit xip NFC programat amb una URL. En acostar el mòbil un parell de centímetres, aquesta URL s'obre a l'instant al navegador."
+      },
+      "app": {
+        "q": "Els clients necessiten una app?",
+        "a": "No. Els iPhone i Android moderns llegeixen NFC de forma nativa: sense app, sense configuració, sense escaneig. Només tocar."
+      },
+      "time": {
+        "q": "Quant triga?",
+        "a": "El termini habitual és de 7 a 14 dies des del brief fins a tenir la placa a la teva barra. Al pla Pro hi ha lliurament prioritari."
+      },
+      "editable": {
+        "q": "Puc canviar els enllaços després?",
+        "a": "Sí. Amb Tapiko Plus pots editar qualsevol destí des del teu panell: substitueix un enllaç de ressenyes per una promo de temporada quan vulguis."
+      },
+      "durable": {
+        "q": "Aguanta el dia a dia d'un bar?",
+        "a": "Sí. Imprimim en PLA / PETG amb acabat mat segellat. Suporta esquitxades, neteja i el ritme diari d'una barra. Tracta'l com una peça ceràmica bonica."
+      }
     }
   },
   "footer": {
