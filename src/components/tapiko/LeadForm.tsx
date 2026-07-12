@@ -1,7 +1,11 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { submitLead } from "@/lib/lead-service";
-import { TIERS } from "@/config/pricing";
+
+const TIER_OPTIONS = [
+  { value: "standard", labelKey: "pricing.standard.name" },
+  { value: "custom", labelKey: "pricing.custom.name" },
+] as const;
 
 export function LeadForm() {
   const { t, i18n } = useTranslation();
@@ -49,9 +53,9 @@ export function LeadForm() {
         <span className="sr-only">{t("lead.form.tier")}</span>
         <select className={inputCls + " appearance-none"} value={values.tier} onChange={set("tier")}>
           <option value="">{t("lead.form.tier_placeholder")}</option>
-          {TIERS.map((tier) => (
-            <option key={tier.key} value={tier.key}>
-              {t(`pricing.tiers.${tier.key}.name`)} — {t(`pricing.tiers.${tier.key}.zones`)}
+          {TIER_OPTIONS.map(({ value, labelKey }) => (
+            <option key={value} value={value}>
+              {t(labelKey)}
             </option>
           ))}
         </select>

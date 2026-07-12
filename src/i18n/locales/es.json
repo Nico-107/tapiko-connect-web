@@ -64,9 +64,31 @@
     "eyebrow": "Precios",
     "title": "Elige la placa que encaja en tu barra.",
     "note": "El precio final depende de la complejidad del diseño y el volumen. ¿Varios locales? Pregúntanos por precio de cadena.",
-    "popular": "Más elegido",
     "from": "desde",
-    "cta": "Pedir presupuesto",
+    "standard": {
+      "name": "Tapiko Estándar",
+      "badge": "Oferta de lanzamiento",
+      "desc": "La placa Tapiko insignia — diseñada, impresa en 3D y lista para enviar.",
+      "period": "pago único",
+      "features": [
+        "Diseño listo para enviar",
+        "4 zonas de toque — cuerpo principal + 3 botones",
+        "Impreso en 3D en Barcelona",
+        "Envío en días, no en semanas"
+      ],
+      "cta": "Conseguir la placa estándar"
+    },
+    "custom": {
+      "name": "Diseño a medida",
+      "desc": "Una placa creada desde cero con los colores e identidad de tu marca.",
+      "features": [
+        "Diseñada con tus colores e identidad de marca",
+        "Tú eliges el número de zonas y sus destinos",
+        "Consulta de diseño prioritaria",
+        "Plazo de entrega 7–14 días"
+      ],
+      "cta": "Solicitar diseño a medida"
+    },
     "plus": {
       "eyebrow": "Complemento opcional",
       "name": "Tapiko Plus",
@@ -76,26 +98,6 @@
     "chain": {
       "title": "¿Grupo de restauración o varios locales? Presupuesto personalizado.",
       "cta": "Hablemos"
-    },
-    "tiers": {
-      "essential": {
-        "name": "Essential",
-        "zones": "1 zona de toque",
-        "desc": "Una placa a medida, una acción NFC. Perfecta para pedir reseñas en Google.",
-        "features": ["Un chip NFC integrado", "Forma y acabado a medida", "Programado y listo para colocar"]
-      },
-      "signature": {
-        "name": "Signature",
-        "zones": "2 zonas de toque",
-        "desc": "Dos acciones en un mismo objeto: reseñas e Instagram, por ejemplo. Diseño completamente a medida.",
-        "features": ["Dos chips NFC integrados", "Diseño refinado de doble zona", "Enlaces cortos con analítica"]
-      },
-      "pro": {
-        "name": "Pro",
-        "zones": "3 zonas de toque",
-        "desc": "Placa multi-acción: reseñas, redes y carta. Acabado premium y plazo prioritario.",
-        "features": ["Tres chips NFC integrados", "Acabado premium y plazo prioritario", "Destinos editables de por vida"]
-      }
     }
   },
   "gallery": {
@@ -138,11 +140,11 @@
       "name": "Tu nombre",
       "business": "Nombre del negocio",
       "email": "Email",
-      "tier": "Plan de interés",
+      "tier": "Te interesa",
       "message": "Cuéntanos algo de tu espacio",
       "submit": "Enviar mensaje",
       "sent": "Gracias, te escribimos enseguida.",
-      "tier_placeholder": "Elige un plan"
+      "tier_placeholder": "Elige una opción"
     },
     "whatsapp": {
       "title": "¿Prefieres WhatsApp?",
@@ -170,7 +172,7 @@
       },
       "time": {
         "q": "¿Cuánto tarda?",
-        "a": "El plazo habitual es de 7 a 14 días desde el brief hasta tener la placa en tu barra. En el plan Pro hay entrega prioritaria."
+        "a": "El plazo habitual es de 7 a 14 días desde el brief hasta tener la placa en tu barra. Hay entrega rápida disponible en pedidos a medida."
       },
       "editable": {
         "q": "¿Puedo cambiar los enlaces después?",
@@ -181,6 +183,37 @@
         "a": "Sí. Imprimimos en PLA / PETG con acabado mate sellado. Soporta salpicaduras, limpieza y el trote diario de una barra. Trátalo como una pieza cerámica bonita."
       }
     }
+  },
+  "configurator": {
+    "eyebrow": "Diseña tu placa",
+    "title": "Véla antes de pedirla.",
+    "subtitle": "Arrastra para rotar · Pellizca para hacer zoom",
+    "drag_hint": "Arrastra para rotar",
+    "webgl_unavailable": "La vista 3D no está disponible en este navegador.",
+    "presets": {
+      "label": "Estilos predefinidos",
+      "minimalist": "Minimalista",
+      "vintage": "Vintage",
+      "coastal": "Costera",
+      "bold": "Atrevida"
+    },
+    "body_color": "Color del cuerpo",
+    "accent_color": "Color de acento",
+    "pattern": {
+      "label": "Patrón de superficie",
+      "solid": "Sólido",
+      "waves": "Ondas",
+      "dots": "Puntos",
+      "grain": "Grano"
+    },
+    "zones": { "label": "Zonas de toque" },
+    "kickstand": { "label": "Soporte trasero" },
+    "name": {
+      "label": "Nombre de tu negocio",
+      "placeholder": "p. ej. Bar Deriva"
+    },
+    "cta": "Solicitar este diseño por WhatsApp",
+    "disclaimer": "Esta es una vista estilizada. La placa final la diseña nuestro equipo en torno a tu marca."
   },
   "footer": {
     "tagline": "Objetos NFC a medida, diseñados e impresos en Barcelona.",

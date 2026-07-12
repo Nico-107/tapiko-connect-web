@@ -64,9 +64,31 @@
     "eyebrow": "Pricing",
     "title": "Choose the plaque that fits your counter.",
     "note": "Final price depends on design complexity and volume. Multiple locations? Ask about chain pricing.",
-    "popular": "Most popular",
     "from": "from",
-    "cta": "Request a quote",
+    "standard": {
+      "name": "Standard Tapiko",
+      "badge": "Founding offer",
+      "desc": "The flagship Tapiko — designed, 3D-printed and ready to ship.",
+      "period": "one-time",
+      "features": [
+        "Ready-to-ship design",
+        "4 tap zones — main body + 3 buttons",
+        "3D-printed in Barcelona",
+        "Ships in days, not weeks"
+      ],
+      "cta": "Get the standard plaque"
+    },
+    "custom": {
+      "name": "Custom Design",
+      "desc": "A plaque built from scratch around your brand's colours and identity.",
+      "features": [
+        "Designed around your colours & brand identity",
+        "Your choice of tap-zone count and destinations",
+        "Priority design consultation",
+        "7–14 day turnaround"
+      ],
+      "cta": "Request custom design"
+    },
     "plus": {
       "eyebrow": "Optional add-on",
       "name": "Tapiko Plus",
@@ -76,26 +98,6 @@
     "chain": {
       "title": "Restaurant group or multiple locations? Get custom pricing.",
       "cta": "Talk to us"
-    },
-    "tiers": {
-      "essential": {
-        "name": "Essential",
-        "zones": "1 tap zone",
-        "desc": "One custom plaque, one NFC action. Perfect for driving Google reviews.",
-        "features": ["One embedded NFC chip", "Custom-designed shape & finish", "Programmed & ready to place"]
-      },
-      "signature": {
-        "name": "Signature",
-        "zones": "2 tap zones",
-        "desc": "Two actions on one object — reviews plus Instagram, for example. Fully custom design.",
-        "features": ["Two embedded NFC chips", "Refined multi-zone design", "Analytics-friendly short links"]
-      },
-      "pro": {
-        "name": "Pro",
-        "zones": "3 tap zones",
-        "desc": "Full multi-action plaque — reviews, socials and menu — premium finish and priority turnaround.",
-        "features": ["Three embedded NFC chips", "Premium finish & priority lead time", "Editable destinations for life"]
-      }
     }
   },
   "gallery": {
@@ -138,11 +140,11 @@
       "name": "Your name",
       "business": "Business name",
       "email": "Email",
-      "tier": "Interested tier",
+      "tier": "Interested in",
       "message": "Tell us about your space",
       "submit": "Send message",
       "sent": "Thanks — we'll be in touch shortly.",
-      "tier_placeholder": "Choose a tier"
+      "tier_placeholder": "Choose an option"
     },
     "whatsapp": {
       "title": "Prefer WhatsApp?",
@@ -170,7 +172,7 @@
       },
       "time": {
         "q": "How long does it take?",
-        "a": "Typical lead time is 7–14 days from brief to a finished plaque on your counter. Rush turnaround is available on the Pro tier."
+        "a": "Typical lead time is 7–14 days from brief to a finished plaque on your counter. Rush turnaround is available on custom orders."
       },
       "editable": {
         "q": "Can I change where it links to later?",
@@ -181,6 +183,37 @@
         "a": "Yes. We print in PLA / PETG with a sealed matte finish. It handles spills, wipes and daily counter life — treat it like a nice ceramic object."
       }
     }
+  },
+  "configurator": {
+    "eyebrow": "Design your plaque",
+    "title": "See it before you order it.",
+    "subtitle": "Drag to rotate · Pinch to zoom",
+    "drag_hint": "Drag to rotate",
+    "webgl_unavailable": "3D preview not available in this browser.",
+    "presets": {
+      "label": "Style presets",
+      "minimalist": "Minimalist",
+      "vintage": "Vintage",
+      "coastal": "Coastal",
+      "bold": "Bold"
+    },
+    "body_color": "Body colour",
+    "accent_color": "Accent colour",
+    "pattern": {
+      "label": "Surface pattern",
+      "solid": "Solid",
+      "waves": "Waves",
+      "dots": "Dots",
+      "grain": "Grain"
+    },
+    "zones": { "label": "Tap zones" },
+    "kickstand": { "label": "Kickstand" },
+    "name": {
+      "label": "Your business name",
+      "placeholder": "e.g. Bar Deriva"
+    },
+    "cta": "Request this design via WhatsApp",
+    "disclaimer": "This is a stylised preview. Final plaque is designed by our team around your brand."
   },
   "footer": {
     "tagline": "Custom NFC objects, designed and printed in Barcelona.",

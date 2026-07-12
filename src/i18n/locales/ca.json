@@ -64,9 +64,31 @@
     "eyebrow": "Preus",
     "title": "Tria la placa que encaixa a la teva barra.",
     "note": "El preu final depèn de la complexitat del disseny i el volum. Diversos locals? Pregunta'ns pel preu de cadena.",
-    "popular": "El més triat",
     "from": "des de",
-    "cta": "Demana pressupost",
+    "standard": {
+      "name": "Tapiko Estàndard",
+      "badge": "Oferta de llançament",
+      "desc": "La placa Tapiko insignia — dissenyada, impresa en 3D i llesta per enviar.",
+      "period": "pagament únic",
+      "features": [
+        "Disseny llest per enviar",
+        "4 zones de toc — cos principal + 3 botons",
+        "Imprès en 3D a Barcelona",
+        "Enviament en dies, no en setmanes"
+      ],
+      "cta": "Aconseguir la placa estàndard"
+    },
+    "custom": {
+      "name": "Disseny a mida",
+      "desc": "Una placa creada des de zero amb els colors i la identitat de la teva marca.",
+      "features": [
+        "Dissenyada amb els teus colors i identitat de marca",
+        "Tu tries el nombre de zones i els seus destins",
+        "Consulta de disseny prioritària",
+        "Termini d'entrega 7–14 dies"
+      ],
+      "cta": "Sol·licitar disseny a mida"
+    },
     "plus": {
       "eyebrow": "Complement opcional",
       "name": "Tapiko Plus",
@@ -76,26 +98,6 @@
     "chain": {
       "title": "Grup de restauració o diversos locals? Pressupost personalitzat.",
       "cta": "Parlem"
-    },
-    "tiers": {
-      "essential": {
-        "name": "Essential",
-        "zones": "1 zona de toc",
-        "desc": "Una placa a mida, una acció NFC. Perfecta per demanar ressenyes a Google.",
-        "features": ["Un xip NFC integrat", "Forma i acabat a mida", "Programat i llest per col·locar"]
-      },
-      "signature": {
-        "name": "Signature",
-        "zones": "2 zones de toc",
-        "desc": "Dues accions en un mateix objecte: ressenyes i Instagram, per exemple. Disseny completament a mida.",
-        "features": ["Dos xips NFC integrats", "Disseny refinat de doble zona", "Enllaços curts amb analítica"]
-      },
-      "pro": {
-        "name": "Pro",
-        "zones": "3 zones de toc",
-        "desc": "Placa multi-acció: ressenyes, xarxes i carta. Acabat premium i termini prioritari.",
-        "features": ["Tres xips NFC integrats", "Acabat premium i termini prioritari", "Destinacions editables per sempre"]
-      }
     }
   },
   "gallery": {
@@ -138,11 +140,11 @@
       "name": "El teu nom",
       "business": "Nom del negoci",
       "email": "Correu",
-      "tier": "Pla d'interès",
+      "tier": "T'interessa",
       "message": "Explica'ns alguna cosa del teu espai",
       "submit": "Enviar missatge",
       "sent": "Gràcies, t'escrivim de seguida.",
-      "tier_placeholder": "Tria un pla"
+      "tier_placeholder": "Tria una opció"
     },
     "whatsapp": {
       "title": "Prefereixes WhatsApp?",
@@ -170,7 +172,7 @@
       },
       "time": {
         "q": "Quant triga?",
-        "a": "El termini habitual és de 7 a 14 dies des del brief fins a tenir la placa a la teva barra. Al pla Pro hi ha lliurament prioritari."
+        "a": "El termini habitual és de 7 a 14 dies des del brief fins a tenir la placa a la teva barra. Hi ha lliurament ràpid disponible en comandes a mida."
       },
       "editable": {
         "q": "Puc canviar els enllaços després?",
@@ -181,6 +183,37 @@
         "a": "Sí. Imprimim en PLA / PETG amb acabat mat segellat. Suporta esquitxades, neteja i el ritme diari d'una barra. Tracta'l com una peça ceràmica bonica."
       }
     }
+  },
+  "configurator": {
+    "eyebrow": "Dissenya la teva placa",
+    "title": "Veu-la abans de demanar-la.",
+    "subtitle": "Arrossega per girar · Pinça per fer zoom",
+    "drag_hint": "Arrossega per girar",
+    "webgl_unavailable": "La vista 3D no està disponible en aquest navegador.",
+    "presets": {
+      "label": "Estils predefinits",
+      "minimalist": "Minimalista",
+      "vintage": "Vintage",
+      "coastal": "Costera",
+      "bold": "Atrevida"
+    },
+    "body_color": "Color del cos",
+    "accent_color": "Color d'accent",
+    "pattern": {
+      "label": "Patró de superfície",
+      "solid": "Sòlid",
+      "waves": "Ones",
+      "dots": "Punts",
+      "grain": "Gra"
+    },
+    "zones": { "label": "Zones de toc" },
+    "kickstand": { "label": "Suport posterior" },
+    "name": {
+      "label": "Nom del teu negoci",
+      "placeholder": "p. ex. Bar Deriva"
+    },
+    "cta": "Sol·licitar aquest disseny per WhatsApp",
+    "disclaimer": "Aquesta és una vista estilitzada. La placa final la dissenya el nostre equip al voltant de la teva marca."
   },
   "footer": {
     "tagline": "Objectes NFC a mida, dissenyats i impresos a Barcelona.",

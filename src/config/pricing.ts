@@ -1,19 +1,16 @@
-// Editable pricing constants. Adjust these to update the pricing section.
-export type TierKey = "essential" | "signature" | "pro";
+// Standard ready-to-order plaque — fixed price, ships immediately.
+export const STANDARD = {
+  amount: 19.99,
+  currency: "€",
+  tapZones: 4, // 1 main body zone + 3 button zones
+  launchNote: true,
+};
 
-export interface Tier {
-  key: TierKey;
-  priceFrom: number;
-  currency: string;
-  highlighted?: boolean;
-}
-
-// One-time custom design + physical plaque.
-export const TIERS: Tier[] = [
-  { key: "essential", priceFrom: 39, currency: "€" },
-  { key: "signature", priceFrom: 59, currency: "€", highlighted: true },
-  { key: "pro", priceFrom: 89, currency: "€" },
-];
+// Custom-designed plaque — quote-based, fully bespoke.
+export const CUSTOM = {
+  startingAmount: 20,
+  currency: "€",
+};
 
 // Optional subscription add-on.
 export const SUBSCRIPTION = {
