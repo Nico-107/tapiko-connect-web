@@ -1,7 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { Reveal } from "./Reveal";
+import stepBrief from "@/assets/step-brief.jpg";
+import stepDesign from "@/assets/step-design.jpg";
+import stepPrint from "@/assets/step-print.jpg";
+import stepEmbed from "@/assets/step-embed.jpg";
 
-const STEPS = ["brief", "design", "print", "embed"] as const;
+const STEPS = [
+  { key: "brief", img: stepBrief },
+  { key: "design", img: stepDesign },
+  { key: "print", img: stepPrint },
+  { key: "embed", img: stepEmbed },
+] as const;
 
 export function HowItWorks() {
   const { t } = useTranslation();
@@ -16,9 +25,17 @@ export function HowItWorks() {
         </Reveal>
 
         <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {STEPS.map((key, i) => (
+          {STEPS.map(({ key, img }, i) => (
             <Reveal key={key} delay={i * 90}>
               <div className="flex flex-col border-t border-[color:var(--ink)]/15 pt-6">
+                <div className="mb-6 overflow-hidden rounded-2xl" style={{ aspectRatio: "4 / 3" }}>
+                  <img
+                    src={img}
+                    alt={t(`how.steps.${key}.title`)}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
                 <span className="eyebrow text-[color:var(--terra)]">0{i + 1}</span>
                 <h3 className="mt-4 text-2xl font-medium text-[color:var(--ink)]">
                   {t(`how.steps.${key}.title`)}
