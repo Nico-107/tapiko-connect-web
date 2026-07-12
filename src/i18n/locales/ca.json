@@ -61,7 +61,8 @@
     "title": "Un objecte físic que fa la feina d'un stack de màrqueting sencer.",
     "body": "Cada placa Tapiko porta un xip NFC per zona. El client acosta el mòbil i aterra exactament on vols. Sense app, sense escaneig, sense fricció.",
     "specs_label": "Fitxa tècnica",
-    "specs": "Xip NTAG213 / 215  ·  Material PLA / PETG  ·  Fins a 4 zones de toc  ·  Disseny totalment a mida  ·  Termini 7–14 dies"
+    "specs": "Xip NTAG213 / 215  ·  Material PLA / PETG  ·  Fins a 4 zones de toc  ·  Disseny totalment a mida  ·  Termini 7–14 dies",
+    "configurator_nudge": "La vols amb els teus colors?"
   },
   "pricing": {
     "eyebrow": "Preus",
@@ -90,7 +91,8 @@
         "Consulta de disseny prioritària",
         "Termini d'entrega 7–14 dies"
       ],
-      "cta": "Sol·licitar disseny a mida"
+      "cta": "Sol·licitar disseny a mida",
+      "configurator_nudge": "Encara no t'has decidit? Prova primer el configurador"
     },
     "plus": {
       "eyebrow": "Complement opcional",
@@ -107,6 +109,7 @@
     "eyebrow": "Exemples",
     "title": "Algunes peces que hem fet.",
     "subtitle": "Cada placa es dissenya des de zero. No n'hi ha dues d'iguals.",
+    "configurator_cta": "T'agrada el que veus? Cada placa es dissenya al voltant de la teva marca.",
     "items": {
       "deriva": "Bar Deriva — ressenyes + Instagram",
       "coffee": "Kalma Roasters — ressenyes + carta",
@@ -246,6 +249,14 @@
     },
     "cta": "Sol·licitar aquest disseny per WhatsApp",
     "disclaimer": "Aquesta és una vista estilitzada. La placa final la dissenya el nostre equip al voltant de la teva marca."
+  },
+  "common": {
+    "design_your_own": "Dissenya la teva"
+  },
+  "banner": {
+    "eyebrow": "Prova-ho ara",
+    "title": "Veu la teva marca en una placa Tapiko.",
+    "body": "Tria un estil, canvia els colors i comprova com quedaria — sense cap compromís."
   },
   "footer": {
     "tagline": "Objectes NFC a mida, dissenyats i impresos a Barcelona.",

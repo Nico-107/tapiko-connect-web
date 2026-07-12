@@ -62,6 +62,23 @@ export function Gallery() {
             );
           })}
         </div>
+
+        <Reveal>
+          <div className="mt-14 flex flex-col items-center gap-4 border-t border-[color:var(--stone)]/40 pt-12 text-center">
+            <p className="max-w-sm text-base text-[color:var(--graphite)]">
+              {t("gallery.configurator_cta")}
+            </p>
+            <a
+              href="#configurator"
+              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-sm font-medium text-[color:var(--ink)] transition-colors hover:border-[color:var(--ink)]"
+            >
+              {t("common.design_your_own")}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -108,6 +108,12 @@ export function Pricing() {
               >
                 {t("pricing.custom.cta")}
               </a>
+              <p className="mt-3 text-center text-[11px] text-[color:var(--graphite)]">
+                {t("pricing.custom.configurator_nudge")}{" · "}
+                <a href="#configurator" className="font-medium text-[color:var(--terra)] hover:underline">
+                  {t("common.design_your_own")} →
+                </a>
+              </p>
             </div>
           </Reveal>
         </div>

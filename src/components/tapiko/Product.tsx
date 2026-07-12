@@ -38,6 +38,18 @@ export function Product() {
             </p>
           </div>
         </Reveal>
+
+        <Reveal>
+          <p className="mt-6 text-sm text-[color:var(--graphite)]">
+            {t("product.configurator_nudge")}{" "}
+            <a
+              href="#configurator"
+              className="font-medium text-[color:var(--ink)] underline underline-offset-2 decoration-[color:var(--stone)] transition-colors hover:decoration-[color:var(--terra)] hover:text-[color:var(--terra)]"
+            >
+              {t("common.design_your_own")} →
+            </a>
+          </p>
+        </Reveal>
       </div>
     </section>
   );

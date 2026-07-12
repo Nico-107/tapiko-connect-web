@@ -61,7 +61,8 @@
     "title": "Un objeto físico que hace el trabajo de todo un stack de marketing.",
     "body": "Cada placa Tapiko lleva un chip NFC por zona. El cliente acerca el móvil y aterriza exactamente donde quieres. Sin app, sin escaneo, sin fricción.",
     "specs_label": "Ficha técnica",
-    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Hasta 4 zonas de toque  ·  Diseño totalmente a medida  ·  Plazo 7–14 días"
+    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Hasta 4 zonas de toque  ·  Diseño totalmente a medida  ·  Plazo 7–14 días",
+    "configurator_nudge": "¿Lo quieres en tus colores?"
   },
   "pricing": {
     "eyebrow": "Precios",
@@ -90,7 +91,8 @@
         "Consulta de diseño prioritaria",
         "Plazo de entrega 7–14 días"
       ],
-      "cta": "Solicitar diseño a medida"
+      "cta": "Solicitar diseño a medida",
+      "configurator_nudge": "¿No estás seguro? Prueba el configurador primero"
     },
     "plus": {
       "eyebrow": "Complemento opcional",
@@ -107,6 +109,7 @@
     "eyebrow": "Ejemplos",
     "title": "Algunas piezas que hemos hecho.",
     "subtitle": "Cada placa se diseña desde cero. No hay dos iguales.",
+    "configurator_cta": "¿Te gusta lo que ves? Cada placa se diseña en torno a tu marca.",
     "items": {
       "deriva": "Bar Deriva — reseñas + Instagram",
       "coffee": "Kalma Roasters — reseñas + carta",
@@ -246,6 +249,14 @@
     },
     "cta": "Solicitar este diseño por WhatsApp",
     "disclaimer": "Esta es una vista estilizada. La placa final la diseña nuestro equipo en torno a tu marca."
+  },
+  "common": {
+    "design_your_own": "Diseña la tuya"
+  },
+  "banner": {
+    "eyebrow": "Pruébalo ahora",
+    "title": "Mira cómo queda tu marca en una placa Tapiko.",
+    "body": "Elige un estilo, cambia los colores y comprueba cómo podría quedar — sin ningún compromiso."
   },
   "footer": {
     "tagline": "Objetos NFC a medida, diseñados e impresos en Barcelona.",

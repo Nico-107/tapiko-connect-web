@@ -61,7 +61,8 @@
     "title": "A physical object that does the work of a whole marketing stack.",
     "body": "Every Tapiko plaque holds one NFC chip per tap zone. Guests hover their phone over a zone and land exactly where you sent them — no app, no scan, no friction.",
     "specs_label": "Specifications",
-    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Up to 4 tap zones  ·  Fully custom design  ·  Lead time 7–14 days"
+    "specs": "Chip NTAG213 / 215  ·  Material PLA / PETG  ·  Up to 4 tap zones  ·  Fully custom design  ·  Lead time 7–14 days",
+    "configurator_nudge": "Want it in your colours?"
   },
   "pricing": {
     "eyebrow": "Pricing",
@@ -90,7 +91,8 @@
         "Priority design consultation",
         "7–14 day turnaround"
       ],
-      "cta": "Request custom design"
+      "cta": "Request custom design",
+      "configurator_nudge": "Not sure yet? Try the configurator first"
     },
     "plus": {
       "eyebrow": "Optional add-on",
@@ -107,6 +109,7 @@
     "eyebrow": "Examples",
     "title": "A few pieces we've made.",
     "subtitle": "Every plaque is designed from scratch. No two look alike.",
+    "configurator_cta": "Like what you see? Each plaque is designed around your brand.",
     "items": {
       "deriva": "Bar Deriva — reviews + Instagram",
       "coffee": "Kalma Roasters — reviews + menu",
@@ -246,6 +249,14 @@
     },
     "cta": "Request this design via WhatsApp",
     "disclaimer": "This is a stylised preview. Final plaque is designed by our team around your brand."
+  },
+  "common": {
+    "design_your_own": "Design your own"
+  },
+  "banner": {
+    "eyebrow": "Try it now",
+    "title": "See your brand on a Tapiko plaque.",
+    "body": "Pick a style, swap the colours, and see exactly how your plaque could look — no commitment required."
   },
   "footer": {
     "tagline": "Custom NFC objects, designed and printed in Barcelona.",
