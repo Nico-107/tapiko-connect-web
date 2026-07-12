@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Reveal } from "./Reveal";
 import { ProductImage } from "./ProductImage";
-import heroImg from "@/assets/hero-plaque.jpg";
+import productImg from "@/assets/product-plaque.jpg";
 
 export function Product() {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ export function Product() {
         <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
           <Reveal>
             <ProductImage
-              src={heroImg}
+              src={productImg}
               alt="Close-up of a Tapiko plaque with three tap zones"
               ratio="1 / 1"
               className="shadow-[0_30px_80px_-40px_rgba(11,31,58,0.35)]"
