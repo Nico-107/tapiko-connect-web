@@ -3,7 +3,7 @@
  */
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, ContactShadows } from "@react-three/drei";
 import { Plaque3D } from "./Plaque3D";
 import type { Pattern, ZoneOption, ButtonShape, FontOption, KickstandStyle, ShapeKey, IconOption } from "@/config/configurator";
 
@@ -36,14 +36,21 @@ export default function ConfiguratorCanvas({
       camera={{ position: [0, 0.15, 3.5], fov: 38 }}
       dpr={[1, isMobile ? 1.5 : 2]}
       gl={{ antialias: !isMobile }}
+      shadows
     >
-      <color attach="background" args={["#F5F3EE"]} />
+      {/* Warm off-white background matching the canvas wrapper gradient */}
+      <color attach="background" args={["#F8F5EF"]} />
 
-      <ambientLight intensity={0.88} />
-      <directionalLight position={[4, 7, 4]}   intensity={0.90} />
-      <directionalLight position={[-3, 2, -2]} intensity={0.60} />
-      <directionalLight position={[0, -3, 3]}  intensity={0.40} color="#FFF8F0" />
-      <pointLight       position={[1, 4, 2]}   intensity={0.18} />
+      {/* Studio lighting: clear key → soft fill → subtle rim from behind */}
+      <ambientLight intensity={0.55} />
+      {/* Key: upper-right warm */}
+      <directionalLight position={[3.5, 6, 4]}  intensity={1.10} />
+      {/* Fill: upper-left soft */}
+      <directionalLight position={[-3, 3, 1]}   intensity={0.50} color="#FFF8F2" />
+      {/* Rim: behind, slightly below — adds edge separation on dark bodies */}
+      <directionalLight position={[0, -1, -3]}  intensity={0.30} color="#EAE4DA" />
+      {/* Ground bounce: warm, low */}
+      <pointLight       position={[0, -2.5, 2]} intensity={0.22} color="#FFF0E8" />
 
       <Suspense fallback={null}>
         <Plaque3D
@@ -62,6 +69,17 @@ export default function ConfiguratorCanvas({
           shapeHeight={shapeHeight}
           cornerRadius={cornerRadius}
           buttonIcons={buttonIcons}
+        />
+
+        {/* Grounding shadow so the object sits on a surface */}
+        <ContactShadows
+          position={[0, -1.08, 0]}
+          opacity={0.28}
+          scale={4.5}
+          blur={3.0}
+          far={1.2}
+          color="#0B1F3A"
+          frames={1}
         />
       </Suspense>
 

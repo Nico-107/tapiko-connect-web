@@ -1,4 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useRef, useEffect } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { CanvasTexture, RepeatWrapping } from "three";
 import { RoundedBox } from "@react-three/drei";
@@ -25,23 +26,16 @@ interface Plaque3DProps {
 }
 
 // ─── colour helpers ───────────────────────────────────────────────────────────
-function luminance(hex: string): number {
+function luminance(hex: string) {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 }
-function contrast(hex: string): string {
-  return luminance(hex) > 0.45 ? "#1A2030" : "#F5F3EE";
-}
+function contrast(hex: string) { return luminance(hex) > 0.45 ? "#1A2030" : "#F5F3EE"; }
 
 // ─── font map ─────────────────────────────────────────────────────────────────
-const FONT_WEIGHT: Record<FontOption, string> = {
-  modern:  "500",
-  serif:   "400",
-  rounded: "600",
-  bold:    "800",
-};
+const FONT_WEIGHT: Record<FontOption, string> = { modern:"500", serif:"400", rounded:"600", bold:"800" };
 const FONT_FAMILY: Record<FontOption, string> = {
   modern:  "system-ui,-apple-system,sans-serif",
   serif:   "Georgia,'Times New Roman',serif",
@@ -71,8 +65,7 @@ function star(ctx: CanvasRenderingContext2D, cx: number, cy: number, pts: number
     const fn = i === 0 ? "moveTo" : "lineTo";
     ctx[fn](cx + Math.cos(a) * r, cy + Math.sin(a) * r);
   }
-  ctx.closePath();
-  ctx.fill();
+  ctx.closePath(); ctx.fill();
 }
 
 // ─── pattern texture ──────────────────────────────────────────────────────────
@@ -84,8 +77,7 @@ function makePatternTex(pattern: Pattern): CanvasTexture | null {
   const ctx = cv.getContext("2d")!;
 
   if (pattern === "waves") {
-    ctx.strokeStyle = "rgba(0,0,0,0.32)";
-    ctx.lineWidth = 2.0;
+    ctx.strokeStyle = "rgba(0,0,0,0.32)"; ctx.lineWidth = 2.0;
     for (let y = 20; y < S; y += 30) {
       ctx.beginPath();
       for (let x = 0; x <= S; x++) {
@@ -96,10 +88,8 @@ function makePatternTex(pattern: Pattern): CanvasTexture | null {
     }
   } else if (pattern === "dots") {
     ctx.fillStyle = "rgba(0,0,0,0.30)";
-    for (let x = 16; x < S; x += 26) {
-      for (let y = 16; y < S; y += 26) {
-        ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fill();
-      }
+    for (let x = 16; x < S; x += 26) for (let y = 16; y < S; y += 26) {
+      ctx.beginPath(); ctx.arc(x, y, 3.5, 0, Math.PI * 2); ctx.fill();
     }
   } else if (pattern === "grain") {
     const id = ctx.createImageData(S, S);
@@ -124,14 +114,12 @@ function makeNameTex(name: string, color: string, fontOption: FontOption): Canva
   const ctx = cv.getContext("2d")!;
   ctx.clearRect(0, 0, 512, 128);
   const label = name.trim() || "Your Name";
-  const mkFont = (s: number) =>
-    `${FONT_WEIGHT[fontOption]} ${s}px ${FONT_FAMILY[fontOption]}`;
+  const mkFont = (s: number) => `${FONT_WEIGHT[fontOption]} ${s}px ${FONT_FAMILY[fontOption]}`;
   let fs = 46;
   ctx.font = mkFont(fs);
   while (ctx.measureText(label).width > 490 && fs > 18) { fs -= 2; ctx.font = mkFont(fs); }
   ctx.fillStyle = color;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
+  ctx.textAlign = "center"; ctx.textBaseline = "middle";
   ctx.fillText(label, 256, 64);
   return new CanvasTexture(cv);
 }
@@ -146,44 +134,29 @@ function makeIconTex(icon: IconOption, iconColor: string): CanvasTexture {
 
   switch (icon) {
     case "maps": {
-      // red pin with white inner dot
       ctx.fillStyle = "#EA4335";
       ctx.beginPath(); ctx.arc(c, c - 14, 28, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath();
-      ctx.moveTo(c, c + 42); ctx.lineTo(c - 20, c + 6); ctx.lineTo(c + 20, c + 6);
-      ctx.closePath(); ctx.fill();
-      ctx.fillStyle = "#ffffff";
-      ctx.beginPath(); ctx.arc(c, c - 14, 11, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(c, c + 42); ctx.lineTo(c - 20, c + 6); ctx.lineTo(c + 20, c + 6); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(c, c - 14, 11, 0, Math.PI * 2); ctx.fill();
       break;
     }
     case "google": {
-      // multicolour G arc
-      const r = 36;
-      ctx.lineWidth = 12; ctx.lineCap = "round";
-      ctx.strokeStyle = "#4285F4";
-      ctx.beginPath(); ctx.arc(c, c, r, -0.55, Math.PI * 0.93, false); ctx.stroke();
-      ctx.strokeStyle = "#DB4437";
-      ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 0.93, Math.PI * 1.33, false); ctx.stroke();
-      ctx.strokeStyle = "#F4B400";
-      ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 1.33, Math.PI * 1.72, false); ctx.stroke();
-      ctx.strokeStyle = "#0F9D58";
-      ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 1.72, -0.55, false); ctx.stroke();
-      // horizontal arm
-      ctx.strokeStyle = "#4285F4"; ctx.lineWidth = 12;
-      ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + r + 3, c); ctx.stroke();
+      const r = 36; ctx.lineWidth = 12; ctx.lineCap = "round";
+      ctx.strokeStyle = "#4285F4"; ctx.beginPath(); ctx.arc(c, c, r, -0.55, Math.PI * 0.93, false); ctx.stroke();
+      ctx.strokeStyle = "#DB4437"; ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 0.93, Math.PI * 1.33, false); ctx.stroke();
+      ctx.strokeStyle = "#F4B400"; ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 1.33, Math.PI * 1.72, false); ctx.stroke();
+      ctx.strokeStyle = "#0F9D58"; ctx.beginPath(); ctx.arc(c, c, r, Math.PI * 1.72, -0.55, false); ctx.stroke();
+      ctx.strokeStyle = "#4285F4"; ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + r + 3, c); ctx.stroke();
       break;
     }
     case "instagram": {
-      // rounded-square camera + inner circle + dot
       ctx.strokeStyle = "#C13584"; ctx.lineWidth = 8;
       rrPath(ctx, 14, 14, S - 28, S - 28, 22); ctx.stroke();
       ctx.beginPath(); ctx.arc(c, c, 21, 0, Math.PI * 2); ctx.stroke();
-      ctx.fillStyle = "#C13584";
-      ctx.beginPath(); ctx.arc(c + 23, c - 23, 5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#C13584"; ctx.beginPath(); ctx.arc(c + 23, c - 23, 5, 0, Math.PI * 2); ctx.fill();
       break;
     }
     case "tiktok": {
-      // stylised music-note with cyan/pink shadows
       const draw = (dx: number, dy: number, col: string) => {
         ctx.fillStyle = col;
         ctx.beginPath(); ctx.arc(c - 9 + dx, c + 20 + dy, 21, 0, Math.PI * 2); ctx.fill();
@@ -191,8 +164,7 @@ function makeIconTex(icon: IconOption, iconColor: string): CanvasTexture {
         ctx.strokeStyle = col; ctx.lineWidth = 10; ctx.lineCap = "round";
         ctx.beginPath(); ctx.arc(c + 26 + dx, c - 22 + dy, 18, -Math.PI * 0.5, Math.PI * 0.5, false); ctx.stroke();
       };
-      ctx.globalAlpha = 0.85; draw(-3, -3, "#69C9D0"); draw(3, 3, "#EE1D52"); ctx.globalAlpha = 1;
-      draw(0, 0, "#000000");
+      ctx.globalAlpha = 0.85; draw(-3, -3, "#69C9D0"); draw(3, 3, "#EE1D52"); ctx.globalAlpha = 1; draw(0, 0, "#000000");
       break;
     }
     case "menu": {
@@ -205,58 +177,40 @@ function makeIconTex(icon: IconOption, iconColor: string): CanvasTexture {
       ctx.beginPath(); ctx.arc(c, c, 42, 0, Math.PI * 2); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(c, c - 42); ctx.lineTo(c, c + 42); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(c - 42, c); ctx.lineTo(c + 42, c); ctx.stroke();
-      // longitude arcs (approximate with narrow ellipses)
-      ctx.save();
-      ctx.translate(c, c);
-      for (const sx of [-0.45, 0.45]) {
-        ctx.beginPath(); ctx.ellipse(0, 0, 42 * Math.abs(sx), 42, 0, 0, Math.PI * 2); ctx.stroke();
-      }
+      ctx.save(); ctx.translate(c, c);
+      for (const sx of [-0.45, 0.45]) { ctx.beginPath(); ctx.ellipse(0, 0, 42 * Math.abs(sx), 42, 0, 0, Math.PI * 2); ctx.stroke(); }
       ctx.restore();
       break;
     }
-    case "review": {
-      ctx.fillStyle = "#F4B400";
-      star(ctx, c, c + 4, 5, 42, 18);
-      break;
-    }
+    case "review":  { ctx.fillStyle = "#F4B400"; star(ctx, c, c + 4, 5, 42, 18); break; }
     case "message": {
       ctx.fillStyle = iconColor;
       rrPath(ctx, 10, 10, S - 20, S * 0.62, 14); ctx.fill();
-      ctx.beginPath();
-      ctx.moveTo(c - 18, S * 0.72 - 4); ctx.lineTo(c + 8, S * 0.72 - 4); ctx.lineTo(c - 10, S - 10);
-      ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(c - 18, S * 0.72 - 4); ctx.lineTo(c + 8, S * 0.72 - 4); ctx.lineTo(c - 10, S - 10); ctx.closePath(); ctx.fill();
       break;
     }
     case "social": {
-      ctx.fillStyle = "#E1306C";
-      ctx.beginPath();
+      ctx.fillStyle = "#E1306C"; ctx.beginPath();
       ctx.moveTo(c, c + 28);
       ctx.bezierCurveTo(c - 52, c - 4, c - 56, c - 44, c, c - 18);
       ctx.bezierCurveTo(c + 56, c - 44, c + 52, c - 4, c, c + 28);
-      ctx.fill();
-      break;
+      ctx.fill(); break;
     }
     case "share": {
-      ctx.fillStyle = iconColor;
-      ctx.beginPath();
-      ctx.moveTo(c, 12);
-      ctx.lineTo(c - 22, 46); ctx.lineTo(c - 9, 46);
-      ctx.lineTo(c - 9, 92); ctx.lineTo(c + 9, 92);
-      ctx.lineTo(c + 9, 46); ctx.lineTo(c + 22, 46);
-      ctx.closePath(); ctx.fill();
-      break;
+      ctx.fillStyle = iconColor; ctx.beginPath();
+      ctx.moveTo(c, 12); ctx.lineTo(c - 22, 46); ctx.lineTo(c - 9, 46);
+      ctx.lineTo(c - 9, 92); ctx.lineTo(c + 9, 92); ctx.lineTo(c + 9, 46); ctx.lineTo(c + 22, 46);
+      ctx.closePath(); ctx.fill(); break;
     }
   }
-
   return new CanvasTexture(cv);
 }
 
-// ─── ExtrudeGeometry for non-classic shapes ───────────────────────────────────
+// ─── Custom ExtrudeGeometry for non-classic shapes ────────────────────────────
 function buildExtrudedGeom(
   shapeKey: ShapeKey, width: number, height: number, thickness: number, cornerRadius: number,
 ): THREE.BufferGeometry | null {
   if (shapeKey === "classic") return null;
-
   const w = width / 2, h = height / 2;
   const shape = new THREE.Shape();
 
@@ -270,15 +224,13 @@ function buildExtrudedGeom(
     shape.absarc(-(w - r), h - r, r, Math.PI / 2, Math.PI, false);
     shape.closePath();
   } else if (shapeKey === "full-round") {
-    const capR = w;
-    const straight = h - capR;
+    const capR = w, straight = h - capR;
     shape.moveTo(-w, straight);
     shape.absarc(0, straight, capR, Math.PI, 0, false);
     shape.lineTo(w, -straight);
     shape.absarc(0, -straight, capR, 0, Math.PI, false);
     shape.closePath();
   } else {
-    // "tag" — disc
     const r = Math.min(w, h);
     shape.moveTo(r, 0);
     shape.absarc(0, 0, r, 0, Math.PI * 2, false);
@@ -296,20 +248,82 @@ export function Plaque3D({
   thickness, buttonShape, fontOption, kickstandStyle,
   shapeKey, shapeWidth, shapeHeight, cornerRadius, buttonIcons,
 }: Plaque3DProps) {
-  const tc         = contrast(bodyColor);
-  const accentIC   = contrast(accentColor);
+  const tc       = contrast(bodyColor);
+  const accentIC = contrast(accentColor);
+
+  // ── Persistent material instances — survive geometry swaps ────────────────
+  const bodyMat = useMemo(() => new THREE.MeshStandardMaterial({
+    roughness: 0.84, metalness: 0.02, envMapIntensity: 0.12,
+  }), []);
+  const accentMat = useMemo(() => new THREE.MeshStandardMaterial({
+    roughness: 0.45, metalness: 0.06, envMapIntensity: 0.18,
+  }), []);
+  const overlayMat = useMemo(() => new THREE.MeshBasicMaterial({
+    transparent: true, opacity: 0.50, depthWrite: false,
+    polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1,
+  }), []);
+
+  // ── Colour lerp targets ───────────────────────────────────────────────────
+  const bodyTarget   = useRef(new THREE.Color(bodyColor));
+  const accentTarget = useRef(new THREE.Color(accentColor));
+
+  // Seed current color on first mount
+  useEffect(() => {
+    bodyMat.color.set(bodyColor);
+    accentMat.color.set(accentColor);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => { bodyTarget.current.set(bodyColor); },   [bodyColor]);
+  useEffect(() => { accentTarget.current.set(accentColor); }, [accentColor]);
+
+  // Update overlay texture when pattern changes
   const patternTex = useMemo(() => makePatternTex(pattern), [pattern]);
-  const nameTex    = useMemo(() => makeNameTex(businessName, tc, fontOption), [businessName, tc, fontOption]);
-  const customGeom = useMemo(
-    () => buildExtrudedGeom(shapeKey, shapeWidth, shapeHeight, thickness, cornerRadius),
-    [shapeKey, shapeWidth, shapeHeight, thickness, cornerRadius],
+  useEffect(() => {
+    overlayMat.map        = patternTex;
+    overlayMat.needsUpdate = true;
+  }, [patternTex, overlayMat]);
+
+  // ── Scale-bounce on geometry / visual changes ─────────────────────────────
+  const groupRef  = useRef<THREE.Group>(null);
+  const animStart = useRef<number | null>(null);
+  useEffect(() => { animStart.current = Date.now(); }, [shapeKey, pattern, hasKickstand]);
+
+  // ── Textures ─────────────────────────────────────────────────────────────
+  const nameTex = useMemo(
+    () => makeNameTex(businessName, tc, fontOption),
+    [businessName, tc, fontOption],
   );
   const iconTextures = useMemo(
     () => buttonIcons.slice(0, zoneCount).map(icon => makeIconTex(icon, accentIC)),
     [buttonIcons, zoneCount, accentIC],
   );
 
-  // Button layout
+  // ── Custom geometry ───────────────────────────────────────────────────────
+  const customGeom = useMemo(
+    () => buildExtrudedGeom(shapeKey, shapeWidth, shapeHeight, thickness, cornerRadius),
+    [shapeKey, shapeWidth, shapeHeight, thickness, cornerRadius],
+  );
+
+  // ── Animation loop ────────────────────────────────────────────────────────
+  useFrame(() => {
+    // Smooth colour transitions (~300ms at 60fps with factor 0.08)
+    bodyMat.color.lerp(bodyTarget.current, 0.08);
+    accentMat.color.lerp(accentTarget.current, 0.08);
+
+    // Scale-bounce feedback when something snaps
+    if (groupRef.current && animStart.current !== null) {
+      const elapsed = Date.now() - animStart.current;
+      if (elapsed < 380) {
+        groupRef.current.scale.setScalar(1 - 0.032 * Math.sin((elapsed / 380) * Math.PI));
+      } else {
+        groupRef.current.scale.setScalar(1);
+        animStart.current = null;
+      }
+    }
+  });
+
+  // ── Button layout ─────────────────────────────────────────────────────────
   const availW  = shapeWidth * 0.82;
   const BTN_GAP = 0.05;
   const maxBtnW = buttonShape === "large-square" ? 0.24 : 0.20;
@@ -325,47 +339,42 @@ export function Plaque3D({
   const BTN_Z  = thickness / 2 + 0.021;
   const BTN_TH = thickness * 0.38;
 
-  // Kickstand dimensions
   const KS = { thin: { w: 0.14, d: 0.024, len: 0.64 }, wide: { w: 0.24, d: 0.030, len: 0.64 }, block: { w: 0.30, d: 0.058, len: 0.60 } }[kickstandStyle];
 
-  // Shared body material props
-  const BODY_MAT = <meshStandardMaterial color={bodyColor} roughness={0.84} metalness={0.02} />;
-  const OVERLAY_MAT = patternTex ? (
-    <meshBasicMaterial
-      map={patternTex} transparent opacity={0.50} depthWrite={false}
-      polygonOffset polygonOffsetFactor={-1} polygonOffsetUnits={-1}
-    />
-  ) : null;
-
+  // ── JSX ──────────────────────────────────────────────────────────────────
   return (
-    <group>
-      {/* ── Body ── */}
+    <group ref={groupRef}>
+      {/* Body */}
       {customGeom ? (
-        <mesh geometry={customGeom}>{BODY_MAT}</mesh>
+        <mesh geometry={customGeom}>
+          <primitive object={bodyMat} attach="material" />
+        </mesh>
       ) : (
         <RoundedBox args={[shapeWidth, shapeHeight, thickness]} radius={cornerRadius} smoothness={6}>
-          {BODY_MAT}
+          <primitive object={bodyMat} attach="material" />
         </RoundedBox>
       )}
 
-      {/* ── Pattern overlay ── */}
-      {OVERLAY_MAT && (
+      {/* Pattern overlay */}
+      {patternTex && (
         customGeom ? (
-          <mesh geometry={customGeom}>{OVERLAY_MAT}</mesh>
+          <mesh geometry={customGeom}>
+            <primitive object={overlayMat} attach="material" />
+          </mesh>
         ) : (
           <RoundedBox args={[shapeWidth, shapeHeight, thickness]} radius={cornerRadius} smoothness={6}>
-            {OVERLAY_MAT}
+            <primitive object={overlayMat} attach="material" />
           </RoundedBox>
         )
       )}
 
-      {/* ── Business name ── */}
+      {/* Business name */}
       <mesh position={[0, shapeHeight * 0.22, thickness / 2 + 0.002]}>
         <planeGeometry args={[shapeWidth * 0.84, shapeHeight * 0.17]} />
         <meshBasicMaterial map={nameTex} transparent alphaTest={0.02} depthWrite={false} />
       </mesh>
 
-      {/* ── Tap-zone buttons + icons ── */}
+      {/* Tap-zone buttons + icons */}
       {btnXs.map((x, i) => {
         const iconTex = iconTextures[i];
         const iconPlane = iconTex ? (
@@ -380,7 +389,7 @@ export function Plaque3D({
             <group key={i}>
               <mesh position={[x, BTN_Y, BTN_Z]} rotation={[Math.PI / 2, 0, 0]}>
                 <cylinderGeometry args={[BTN_W * 0.50, BTN_W * 0.50, BTN_TH, 28]} />
-                <meshStandardMaterial color={accentColor} roughness={0.45} metalness={0.05} />
+                <primitive object={accentMat} attach="material" />
               </mesh>
               {iconPlane}
             </group>
@@ -389,11 +398,8 @@ export function Plaque3D({
         if (buttonShape === "pill") {
           return (
             <group key={i}>
-              <RoundedBox
-                args={[BTN_W, BTN_W * 0.52, BTN_TH]} radius={BTN_W * 0.24} smoothness={4}
-                position={[x, BTN_Y, BTN_Z]}
-              >
-                <meshStandardMaterial color={accentColor} roughness={0.45} metalness={0.05} />
+              <RoundedBox args={[BTN_W, BTN_W * 0.52, BTN_TH]} radius={BTN_W * 0.24} smoothness={4} position={[x, BTN_Y, BTN_Z]}>
+                <primitive object={accentMat} attach="material" />
               </RoundedBox>
               {iconPlane}
             </group>
@@ -407,26 +413,23 @@ export function Plaque3D({
               smoothness={4}
               position={[x, BTN_Y, BTN_Z]}
             >
-              <meshStandardMaterial color={accentColor} roughness={0.45} metalness={0.05} />
+              <primitive object={accentMat} attach="material" />
             </RoundedBox>
             {iconPlane}
           </group>
         );
       })}
 
-      {/* ── Kickstand ── */}
+      {/* Kickstand */}
       {hasKickstand && (
-        <group
-          position={[0, -(shapeHeight / 2) + 0.05, -(thickness / 2) - 0.01]}
-          rotation={[Math.PI * 0.22, 0, 0]}
-        >
+        <group position={[0, -(shapeHeight / 2) + 0.05, -(thickness / 2) - 0.01]} rotation={[Math.PI * 0.22, 0, 0]}>
           <mesh position={[0, -(KS.len / 2), 0]}>
             <boxGeometry args={[KS.w, KS.len, KS.d]} />
-            <meshStandardMaterial color={bodyColor} roughness={0.84} metalness={0.02} />
+            <primitive object={bodyMat} attach="material" />
           </mesh>
           <mesh position={[0, -KS.len - 0.012, 0]}>
             <boxGeometry args={[KS.w * 1.5, 0.022, KS.d * 3]} />
-            <meshStandardMaterial color={bodyColor} roughness={0.84} metalness={0.02} />
+            <primitive object={bodyMat} attach="material" />
           </mesh>
         </group>
       )}

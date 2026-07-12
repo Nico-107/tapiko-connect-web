@@ -187,6 +187,7 @@
   "configurator": {
     "eyebrow": "Diseña tu placa",
     "title": "Véla antes de pedirla.",
+    "intro": "Elige un estilo, cambia colores y formas, y envíanos el look que te guste — nuestro equipo se encarga del resto.",
     "subtitle": "Arrastra para rotar · Pellizca para hacer zoom",
     "drag_hint": "Arrastra para rotar",
     "webgl_unavailable": "La vista 3D no está disponible en este navegador.",

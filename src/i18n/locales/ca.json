@@ -187,6 +187,7 @@
   "configurator": {
     "eyebrow": "Dissenya la teva placa",
     "title": "Veu-la abans de demanar-la.",
+    "intro": "Tria un estil, canvia colors i formes, i envia'ns el disseny que t'agradi — el nostre equip s'encarrega de la resta.",
     "subtitle": "Arrossega per girar · Pinça per fer zoom",
     "drag_hint": "Arrossega per girar",
     "webgl_unavailable": "La vista 3D no està disponible en aquest navegador.",

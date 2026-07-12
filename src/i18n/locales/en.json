@@ -187,6 +187,7 @@
   "configurator": {
     "eyebrow": "Design your plaque",
     "title": "See it before you order it.",
+    "intro": "Pick a style, swap colours and shapes, then send us the look you love — our team handles the rest.",
     "subtitle": "Drag to rotate · Pinch to zoom",
     "drag_hint": "Drag to rotate",
     "webgl_unavailable": "3D preview not available in this browser.",
