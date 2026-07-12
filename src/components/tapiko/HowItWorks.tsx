@@ -15,7 +15,7 @@ const STEPS = [
 export function HowItWorks() {
   const { t } = useTranslation();
   return (
-    <section id="how" className="border-t border-[color:var(--stone)]/70 py-24 sm:py-32">
+    <section id="how" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <p className="eyebrow">{t("how.eyebrow")}</p>

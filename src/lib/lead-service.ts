@@ -8,6 +8,7 @@ export interface LeadPayload {
 }
 
 // TODO: wire to real endpoint (server function / email API / CRM webhook).
+// Destination email: 011107miko@gmail.com
 export async function submitLead(payload: LeadPayload): Promise<{ ok: true }> {
   // eslint-disable-next-line no-console
   console.log("[Tapiko] submitLead ->", payload);

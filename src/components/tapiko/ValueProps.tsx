@@ -22,7 +22,7 @@ export function ValueProps() {
         <div className="mt-14 grid gap-8 md:grid-cols-3">
           {ITEMS.map(({ key, Icon }, i) => (
             <Reveal key={key} delay={i * 100}>
-              <div className="flex h-full flex-col rounded-2xl border border-[color:var(--stone)] bg-white/60 p-8">
+              <div className="flex h-full flex-col rounded-2xl border border-[color:var(--stone)]/50 bg-white shadow-sm p-8">
                 <span
                   aria-hidden
                   className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[color:var(--terra)]/15 text-[color:var(--terra)]"

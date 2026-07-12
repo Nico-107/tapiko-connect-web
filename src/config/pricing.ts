@@ -24,7 +24,7 @@ export const SUBSCRIPTION = {
 };
 
 export const CONTACT = {
-  whatsappNumber: "34600000000",
+  whatsappNumber: "34672051147",
   whatsappMessage: "Hola Tapiko! Me gustaria mas informacion sobre una placa NFC.",
   instagram: "https://instagram.com/tapiko.studio",
   tiktok: "https://tiktok.com/@tapiko.studio",

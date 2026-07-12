@@ -6,17 +6,17 @@ import { RefreshCw } from "lucide-react";
 export function Pricing() {
   const { t } = useTranslation();
   return (
-    <section id="pricing" className="border-t border-[color:var(--stone)]/70 py-24 sm:py-32">
+    <section id="pricing" className="bg-[color:var(--ink)] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <p className="eyebrow">{t("pricing.eyebrow")}</p>
-              <h2 className="mt-4 text-4xl font-medium leading-tight text-[color:var(--ink)] sm:text-5xl">
+              <p className="eyebrow text-[color:var(--paper)]/60">{t("pricing.eyebrow")}</p>
+              <h2 className="mt-4 text-4xl font-medium leading-tight text-[color:var(--paper)] sm:text-5xl">
                 {t("pricing.title")}
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-[color:var(--graphite)]">
+            <p className="max-w-md text-sm leading-relaxed text-[color:var(--paper)]/60">
               {t("pricing.note")}
             </p>
           </div>
@@ -35,7 +35,7 @@ export function Pricing() {
                   className={`relative flex h-full flex-col rounded-3xl p-8 transition-transform hover:-translate-y-1 ${
                     highlighted
                       ? "border-2 border-[color:var(--terra)] bg-white shadow-[0_30px_60px_-40px_rgba(226,104,60,0.55)]"
-                      : "border border-[color:var(--stone)] bg-white/60"
+                      : "border border-[color:var(--stone)]/40 bg-white"
                   }`}
                 >
                   {highlighted && (
@@ -90,30 +90,30 @@ export function Pricing() {
 
         {/* Optional subscription add-on */}
         <Reveal delay={120}>
-          <div className="mt-10 flex flex-col gap-6 rounded-3xl border border-dashed border-[color:var(--stone)] bg-[color:var(--paper)]/60 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+          <div className="mt-10 flex flex-col gap-6 rounded-3xl border border-dashed border-white/20 bg-white/5 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
             <div className="flex items-start gap-4">
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--terra)]/15 text-[color:var(--terra)]">
                 <RefreshCw size={18} strokeWidth={1.7} />
               </span>
               <div>
-                <p className="eyebrow text-[color:var(--graphite)]">{t("pricing.plus.eyebrow")}</p>
-                <h3 className="mt-2 text-2xl font-medium text-[color:var(--ink)]">
+                <p className="eyebrow text-[color:var(--paper)]/60">{t("pricing.plus.eyebrow")}</p>
+                <h3 className="mt-2 text-2xl font-medium text-[color:var(--paper)]">
                   {t("pricing.plus.name")}
                 </h3>
-                <p className="mt-2 max-w-lg text-sm leading-relaxed text-[color:var(--graphite)]">
+                <p className="mt-2 max-w-lg text-sm leading-relaxed text-[color:var(--paper)]/60">
                   {t("pricing.plus.desc")}
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-6 md:flex-col md:items-end md:gap-2">
               <div className="flex items-baseline gap-1">
-                <span className="eyebrow text-[color:var(--graphite)]">{t("pricing.from")}</span>
-                <span className="text-3xl font-medium text-[color:var(--ink)]" style={{ fontFamily: "var(--font-serif)" }}>
+                <span className="eyebrow text-[color:var(--paper)]/60">{t("pricing.from")}</span>
+                <span className="text-3xl font-medium text-[color:var(--paper)]" style={{ fontFamily: "var(--font-serif)" }}>
                   {SUBSCRIPTION.currency}{SUBSCRIPTION.priceFrom}
                 </span>
-                <span className="text-sm text-[color:var(--graphite)]">{SUBSCRIPTION.period}</span>
+                <span className="text-sm text-[color:var(--paper)]/60">{SUBSCRIPTION.period}</span>
               </div>
-              <span className="text-xs text-[color:var(--graphite)]">{t("pricing.plus.note")}</span>
+              <span className="text-xs text-[color:var(--paper)]/40">{t("pricing.plus.note")}</span>
             </div>
           </div>
         </Reveal>
@@ -122,12 +122,12 @@ export function Pricing() {
         <Reveal delay={160}>
           <a
             href="#contact"
-            className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl bg-[color:var(--ink)] px-6 py-5 text-[color:var(--paper)] transition-transform hover:-translate-y-0.5 sm:flex-row sm:items-center sm:px-8"
+            className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl bg-[color:var(--terra)] px-6 py-5 text-white transition-transform hover:-translate-y-0.5 sm:flex-row sm:items-center sm:px-8"
           >
             <span className="max-w-xl text-base sm:text-lg">
               {t("pricing.chain.title")}
             </span>
-            <span className="eyebrow rounded-full bg-[color:var(--terra)] px-4 py-2 text-white">
+            <span className="eyebrow rounded-full bg-white px-4 py-2 text-[color:var(--ink)]">
               {t("pricing.chain.cta")}
             </span>
           </a>

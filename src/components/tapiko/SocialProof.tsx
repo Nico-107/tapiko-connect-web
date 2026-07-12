@@ -7,20 +7,20 @@ const TESTIMONIALS = ["t1", "t2", "t3"] as const;
 export function SocialProof() {
   const { t } = useTranslation();
   return (
-    <section className="border-t border-[color:var(--stone)]/70 py-20 sm:py-24">
+    <section className="bg-[color:var(--ink)] py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
-          <p className="eyebrow text-center text-[color:var(--graphite)]">
+          <p className="eyebrow text-center text-[color:var(--paper)]/60">
             {t("proof.title")}
           </p>
           <div className="mt-8 grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-5">
             {LOGO_SLOTS.map((k) => (
               <div
                 key={k}
-                className="flex h-14 items-center justify-center rounded-xl border border-dashed border-[color:var(--stone)] px-4"
+                className="flex h-14 items-center justify-center rounded-xl border border-dashed border-white/20 px-4"
               >
                 <span
-                  className="text-lg tracking-tight text-[color:var(--graphite)]/60"
+                  className="text-lg tracking-tight text-white/40"
                   style={{ fontFamily: "var(--font-serif)" }}
                 >
                   {t(`proof.logos.${k}`)}
@@ -33,18 +33,18 @@ export function SocialProof() {
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((k, i) => (
             <Reveal key={k} delay={i * 90}>
-              <figure className="flex h-full flex-col justify-between rounded-2xl border border-[color:var(--stone)] bg-white/60 p-6">
+              <figure className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6">
                 <blockquote
-                  className="text-lg leading-relaxed text-[color:var(--ink)]"
+                  className="text-lg leading-relaxed text-[color:var(--paper)]"
                   style={{ fontFamily: "var(--font-serif)" }}
                 >
-                  “{t(`proof.testimonials.${k}.quote`)}”
+                  "{t(`proof.testimonials.${k}.quote`)}"
                 </blockquote>
-                <figcaption className="mt-6 border-t border-[color:var(--stone)] pt-4 text-sm">
-                  <span className="block font-medium text-[color:var(--ink)]">
+                <figcaption className="mt-6 border-t border-white/15 pt-4 text-sm">
+                  <span className="block font-medium text-[color:var(--paper)]">
                     {t(`proof.testimonials.${k}.name`)}
                   </span>
-                  <span className="block text-[color:var(--graphite)]">
+                  <span className="block text-[color:var(--paper)]/50">
                     {t(`proof.testimonials.${k}.role`)}
                   </span>
                 </figcaption>

@@ -6,7 +6,7 @@ import deriva from "@/assets/case-bar-deriva.jpg";
 export function CaseStudy() {
   const { t } = useTranslation();
   return (
-    <section className="border-t border-[color:var(--stone)]/70 bg-[color:var(--ink)] py-24 text-[color:var(--paper)] sm:py-32">
+    <section className="bg-[color:var(--ink)] py-24 text-[color:var(--paper)] sm:py-32">
       <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16 lg:px-10">
         <Reveal>
           <ProductImage
