@@ -1,17 +1,20 @@
 import { useTranslation } from "react-i18next";
 import { Reveal } from "./Reveal";
 import { ProductImage } from "./ProductImage";
-import gallery from "@/assets/gallery-collection.jpg";
-import hero from "@/assets/hero-plaque.jpg";
-import deriva from "@/assets/case-bar-deriva.jpg";
+import deriva from "@/assets/gallery-deriva.jpg";
+import coffee from "@/assets/gallery-coffee.jpg";
+import tapas from "@/assets/gallery-tapas.jpg";
+import cocktail from "@/assets/gallery-cocktail.jpg";
+import brunch from "@/assets/gallery-brunch.jpg";
+import pizza from "@/assets/gallery-pizza.jpg";
 
-const ITEMS: { id: string; src?: string; ratio: string }[] = [
-  { id: "1", src: hero, ratio: "4 / 5" },
-  { id: "2", src: gallery, ratio: "4 / 5" },
-  { id: "3", src: deriva, ratio: "4 / 5" },
-  { id: "4", src: undefined, ratio: "4 / 5" },
-  { id: "5", src: undefined, ratio: "4 / 5" },
-  { id: "6", src: undefined, ratio: "4 / 5" },
+const ITEMS: { id: string; src: string; ratio: string }[] = [
+  { id: "deriva", src: deriva, ratio: "4 / 5" },
+  { id: "coffee", src: coffee, ratio: "4 / 5" },
+  { id: "tapas", src: tapas, ratio: "4 / 5" },
+  { id: "cocktail", src: cocktail, ratio: "4 / 5" },
+  { id: "brunch", src: brunch, ratio: "4 / 5" },
+  { id: "pizza", src: pizza, ratio: "4 / 5" },
 ];
 
 export function Gallery() {

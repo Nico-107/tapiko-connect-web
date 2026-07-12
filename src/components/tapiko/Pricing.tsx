@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Reveal } from "./Reveal";
-import { TIERS } from "@/config/pricing";
+import { TIERS, SUBSCRIPTION } from "@/config/pricing";
+import { RefreshCw } from "lucide-react";
 
 export function Pricing() {
   const { t } = useTranslation();
@@ -86,6 +87,51 @@ export function Pricing() {
             );
           })}
         </div>
+
+        {/* Optional subscription add-on */}
+        <Reveal delay={120}>
+          <div className="mt-10 flex flex-col gap-6 rounded-3xl border border-dashed border-[color:var(--stone)] bg-[color:var(--paper)]/60 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--terra)]/15 text-[color:var(--terra)]">
+                <RefreshCw size={18} strokeWidth={1.7} />
+              </span>
+              <div>
+                <p className="eyebrow text-[color:var(--graphite)]">{t("pricing.plus.eyebrow")}</p>
+                <h3 className="mt-2 text-2xl font-medium text-[color:var(--ink)]">
+                  {t("pricing.plus.name")}
+                </h3>
+                <p className="mt-2 max-w-lg text-sm leading-relaxed text-[color:var(--graphite)]">
+                  {t("pricing.plus.desc")}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6 md:flex-col md:items-end md:gap-2">
+              <div className="flex items-baseline gap-1">
+                <span className="eyebrow text-[color:var(--graphite)]">{t("pricing.from")}</span>
+                <span className="text-3xl font-medium text-[color:var(--ink)]" style={{ fontFamily: "var(--font-serif)" }}>
+                  {SUBSCRIPTION.currency}{SUBSCRIPTION.priceFrom}
+                </span>
+                <span className="text-sm text-[color:var(--graphite)]">{SUBSCRIPTION.period}</span>
+              </div>
+              <span className="text-xs text-[color:var(--graphite)]">{t("pricing.plus.note")}</span>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Chain / multi-location CTA */}
+        <Reveal delay={160}>
+          <a
+            href="#contact"
+            className="mt-6 flex flex-col items-start justify-between gap-3 rounded-2xl bg-[color:var(--ink)] px-6 py-5 text-[color:var(--paper)] transition-transform hover:-translate-y-0.5 sm:flex-row sm:items-center sm:px-8"
+          >
+            <span className="max-w-xl text-base sm:text-lg">
+              {t("pricing.chain.title")}
+            </span>
+            <span className="eyebrow rounded-full bg-[color:var(--terra)] px-4 py-2 text-white">
+              {t("pricing.chain.cta")}
+            </span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );

@@ -8,11 +8,20 @@ export interface Tier {
   highlighted?: boolean;
 }
 
+// One-time custom design + physical plaque.
 export const TIERS: Tier[] = [
-  { key: "essential", priceFrom: 89, currency: "€" },
-  { key: "signature", priceFrom: 149, currency: "€", highlighted: true },
-  { key: "pro", priceFrom: 229, currency: "€" },
+  { key: "essential", priceFrom: 39, currency: "€" },
+  { key: "signature", priceFrom: 59, currency: "€", highlighted: true },
+  { key: "pro", priceFrom: 89, currency: "€" },
 ];
+
+// Optional subscription add-on.
+export const SUBSCRIPTION = {
+  key: "plus",
+  priceFrom: 7,
+  currency: "€",
+  period: "/mo",
+};
 
 export const CONTACT = {
   whatsappNumber: "34600000000",

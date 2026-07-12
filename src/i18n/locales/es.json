@@ -9,12 +9,39 @@
   },
   "hero": {
     "eyebrow": "Barcelona · Objetos NFC a medida",
-    "title_pre": "Objetos que",
-    "title_accent": "reciben",
-    "title_post": "a tus clientes.",
-    "subhead": "Diseñamos e imprimimos en 3D placas NFC hechas a medida para restaurantes, bares y cafeterías. Un toque y cada cliente aterriza justo donde tú quieres: reseñas, redes, carta.",
+    "title_pre": "Convierte cada cliente en una",
+    "title_accent": "reseña",
+    "title_post": "de cinco estrellas.",
+    "subhead": "Placas NFC a medida, diseñadas e impresas en 3D en Barcelona para restaurantes, bares y cafeterías. Un toque y cada cliente aterriza exactamente donde quieres: reseñas, redes, carta. Sin app, sin QR, sin fricción.",
     "cta_primary": "Pedir presupuesto",
     "cta_secondary": "Ver cómo funciona"
+  },
+  "proof": {
+    "title": "Nos eligen los mejores locales de Barcelona",
+    "logos": {
+      "l1": "Deriva",
+      "l2": "Kalma",
+      "l3": "Casa Vermut",
+      "l4": "Noctámbula",
+      "l5": "Verd"
+    },
+    "testimonials": {
+      "t1": {
+        "quote": "Triplicamos las reseñas de Google el primer mes. A los clientes les encanta que sea un objeto de verdad, no una pegatina con QR.",
+        "name": "Marta Puig",
+        "role": "Propietaria · Bar Deriva"
+      },
+      "t2": {
+        "quote": "Está en la barra como una pieza más de la marca. Nadie pregunta qué es: solo tocan.",
+        "name": "Iván Ruiz",
+        "role": "Fundador · Kalma Roasters"
+      },
+      "t3": {
+        "quote": "El diseño encajaba con nosotros desde el primer boceto. Vale cada euro.",
+        "name": "Clara Ferrer",
+        "role": "Encargada · Verd Brunch"
+      }
+    }
   },
   "how": {
     "eyebrow": "Cómo funciona",
@@ -36,28 +63,38 @@
   "pricing": {
     "eyebrow": "Precios",
     "title": "Elige la placa que encaja en tu barra.",
-    "note": "El precio final depende de la complejidad del diseño y el volumen. Todos los planes incluyen concepto a medida y producción en Barcelona.",
+    "note": "El precio final depende de la complejidad del diseño y el volumen. ¿Varios locales? Pregúntanos por precio de cadena.",
     "popular": "Más elegido",
     "from": "desde",
     "cta": "Pedir presupuesto",
+    "plus": {
+      "eyebrow": "Complemento opcional",
+      "name": "Tapiko Plus",
+      "desc": "Cambia los destinos de cada toque cuando quieras — sustituye un enlace de reseñas por una promo de temporada — más analítica de toques y soporte prioritario.",
+      "note": "Por local · cancela cuando quieras"
+    },
+    "chain": {
+      "title": "¿Grupo de restauración o varios locales? Presupuesto personalizado.",
+      "cta": "Hablemos"
+    },
     "tiers": {
       "essential": {
         "name": "Essential",
         "zones": "1 zona de toque",
-        "desc": "Placa de una sola acción, perfecta para pedir reseñas en Google.",
+        "desc": "Una placa a medida, una acción NFC. Perfecta para pedir reseñas en Google.",
         "features": ["Un chip NFC integrado", "Forma y acabado a medida", "Programado y listo para colocar"]
       },
       "signature": {
         "name": "Signature",
         "zones": "2 zonas de toque",
-        "desc": "Dos acciones en un mismo objeto: reseñas e Instagram, por ejemplo.",
+        "desc": "Dos acciones en un mismo objeto: reseñas e Instagram, por ejemplo. Diseño completamente a medida.",
         "features": ["Dos chips NFC integrados", "Diseño refinado de doble zona", "Enlaces cortos con analítica"]
       },
       "pro": {
         "name": "Pro",
-        "zones": "3+ zonas de toque",
-        "desc": "La experiencia completa: reseñas, redes, carta y wifi en una sola pieza.",
-        "features": ["Varios chips NFC integrados", "Acabado premium y plazo prioritario", "Destinos editables de por vida"]
+        "zones": "3 zonas de toque",
+        "desc": "Placa multi-acción: reseñas, redes y carta. Acabado premium y plazo prioritario.",
+        "features": ["Tres chips NFC integrados", "Acabado premium y plazo prioritario", "Destinos editables de por vida"]
       }
     }
   },
@@ -66,12 +103,12 @@
     "title": "Algunas piezas que hemos hecho.",
     "subtitle": "Cada placa se diseña desde cero. No hay dos iguales.",
     "items": {
-      "1": "Lumière — bistró en el Eixample",
-      "2": "Santa Eulàlia — Brunch y café",
-      "3": "Marina — restaurante en la Barceloneta",
-      "4": "Sol — Tapas y vermut",
-      "5": "Café Floreta — Eixample",
-      "6": "El Pati — Café y jardín"
+      "deriva": "Bar Deriva — reseñas + Instagram",
+      "coffee": "Kalma Roasters — reseñas + carta",
+      "tapas": "Casa Vermut — reseñas + wifi + carta",
+      "cocktail": "Noctámbula — Instagram + coctelería",
+      "brunch": "Verd Brunch — reseñas + Instagram",
+      "pizza": "Nonna Pina — reseñas + delivery"
     }
   },
   "case": {
@@ -117,6 +154,32 @@
       "body": "Repasamos tu marca y esbozamos una primera idea en directo.",
       "cta": "Reservar llamada",
       "placeholder": "[ Espacio para Calendly ]"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Todo lo que puede que te preguntes.",
+    "items": {
+      "how": {
+        "q": "¿Cómo funciona el NFC?",
+        "a": "Cada zona de toque lleva un pequeño chip NFC programado con una URL. Al acercar el móvil un par de centímetros, esa URL se abre al instante en el navegador."
+      },
+      "app": {
+        "q": "¿Los clientes necesitan una app?",
+        "a": "No. Los iPhone y Android modernos leen NFC de forma nativa: sin app, sin configuración, sin escaneo. Solo tocar."
+      },
+      "time": {
+        "q": "¿Cuánto tarda?",
+        "a": "El plazo habitual es de 7 a 14 días desde el brief hasta tener la placa en tu barra. En el plan Pro hay entrega prioritaria."
+      },
+      "editable": {
+        "q": "¿Puedo cambiar los enlaces después?",
+        "a": "Sí. Con Tapiko Plus puedes editar cualquier destino desde tu panel: sustituye un enlace de reseñas por una promo de temporada cuando quieras."
+      },
+      "durable": {
+        "q": "¿Aguanta el día a día de un bar?",
+        "a": "Sí. Imprimimos en PLA / PETG con acabado mate sellado. Soporta salpicaduras, limpieza y el trote diario de una barra. Trátalo como una pieza cerámica bonita."
+      }
     }
   },
   "footer": {
