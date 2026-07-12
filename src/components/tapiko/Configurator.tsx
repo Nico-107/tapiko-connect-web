@@ -8,12 +8,12 @@ import {
   ACCENT_COLORS,
   PATTERNS,
   ZONE_OPTIONS,
+  BASE_SHAPES,
 } from "@/config/configurator";
-import type { Pattern, ZoneOption } from "@/config/configurator";
+import type { Pattern, ZoneOption, ButtonShape, FontStyle, KickstandStyle, ShapeKey } from "@/config/configurator";
 
 const ConfiguratorCanvas = lazy(() => import("./ConfiguratorCanvas"));
 
-// ── Error boundary — falls back silently if WebGL is unavailable ──
 interface EBState { hasError: boolean }
 class WebGLBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, EBState> {
   state: EBState = { hasError: false };
@@ -22,7 +22,6 @@ class WebGLBoundary extends Component<{ children: ReactNode; fallback: ReactNode
   render() { return this.state.hasError ? this.props.fallback : this.props.children; }
 }
 
-// ── Small swatch button ──
 function Swatch({ color, active, onClick }: { color: string; active: boolean; onClick: () => void }) {
   return (
     <button
@@ -40,7 +39,6 @@ function Swatch({ color, active, onClick }: { color: string; active: boolean; on
   );
 }
 
-// ── Pattern / preset chip ──
 function Chip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
@@ -59,18 +57,28 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
   );
 }
 
+const DEFAULT_SHAPE = BASE_SHAPES[0];
+
 export function Configurator() {
   const { t } = useTranslation();
 
-  const [hasMounted, setHasMounted]         = useState(false);
-  const [isMobile,   setIsMobile]           = useState(false);
-  const [activePreset, setActivePreset]     = useState<string>("minimalist");
-  const [bodyColor,    setBodyColor]        = useState("#F5F3EE");
-  const [accentColor,  setAccentColor]      = useState("#0B1F3A");
-  const [pattern,      setPattern]          = useState<Pattern>("solid");
-  const [zoneCount,    setZoneCount]        = useState<ZoneOption>(2);
-  const [hasKickstand, setHasKickstand]     = useState(false);
-  const [businessName, setBusinessName]     = useState("");
+  const [hasMounted, setHasMounted]             = useState(false);
+  const [isMobile,   setIsMobile]               = useState(false);
+  const [activePreset,  setActivePreset]         = useState<string>("minimalist");
+  const [activeShape,   setActiveShape]          = useState<ShapeKey>("classic");
+  const [bodyColor,     setBodyColor]            = useState("#F5F3EE");
+  const [accentColor,   setAccentColor]          = useState("#2A3A50");
+  const [pattern,       setPattern]              = useState<Pattern>("solid");
+  const [thickness,     setThickness]            = useState(0.10);
+  const [buttonShape,   setButtonShape]          = useState<ButtonShape>("square");
+  const [fontStyle,     setFontStyle]            = useState<FontStyle>("normal");
+  const [kickstandStyle, setKickstandStyle]      = useState<KickstandStyle>("thin");
+  const [shapeWidth,    setShapeWidth]           = useState(DEFAULT_SHAPE.width);
+  const [shapeHeight,   setShapeHeight]          = useState(DEFAULT_SHAPE.height);
+  const [cornerRadius,  setCornerRadius]         = useState(DEFAULT_SHAPE.cornerRadius);
+  const [zoneCount,     setZoneCount]            = useState<ZoneOption>(2);
+  const [hasKickstand,  setHasKickstand]         = useState(false);
+  const [businessName,  setBusinessName]         = useState("");
   const [dragHintDismissed, setDragHintDismissed] = useState(false);
 
   useEffect(() => {
@@ -85,31 +93,34 @@ export function Configurator() {
     setBodyColor(p.bodyColor);
     setAccentColor(p.accentColor);
     setPattern(p.pattern as Pattern);
+    setThickness(p.thickness);
+    setButtonShape(p.buttonShape as ButtonShape);
+    setFontStyle(p.fontStyle as FontStyle);
+    setKickstandStyle(p.kickstandStyle as KickstandStyle);
   }
 
-  function handleBodyColor(c: string) {
-    setBodyColor(c);
-    setActivePreset("");
+  function applyShape(key: ShapeKey) {
+    const s = BASE_SHAPES.find(b => b.key === key);
+    if (!s) return;
+    setActiveShape(key);
+    setShapeWidth(s.width);
+    setShapeHeight(s.height);
+    setCornerRadius(s.cornerRadius);
   }
-  function handleAccentColor(c: string) {
-    setAccentColor(c);
-    setActivePreset("");
-  }
-  function handlePattern(p: Pattern) {
-    setPattern(p);
-    setActivePreset("");
-  }
+
+  function handleBodyColor(c: string)   { setBodyColor(c);   setActivePreset(""); }
+  function handleAccentColor(c: string) { setAccentColor(c); setActivePreset(""); }
+  function handlePattern(p: Pattern)    { setPattern(p);     setActivePreset(""); }
 
   function stepZone(delta: number) {
-    const idx = ZONE_OPTIONS.indexOf(zoneCount);
+    const idx  = ZONE_OPTIONS.indexOf(zoneCount);
     const next = ZONE_OPTIONS[Math.min(Math.max(0, idx + delta), ZONE_OPTIONS.length - 1)];
     setZoneCount(next);
   }
 
-  // Build WhatsApp CTA with config summary pre-filled
   const configSummary = [
-    `Body: ${bodyColor}`,
-    `Accent: ${accentColor}`,
+    activePreset ? `Style: ${activePreset}` : `Body: ${bodyColor}, Accent: ${accentColor}`,
+    `Shape: ${activeShape}`,
     `Pattern: ${pattern}`,
     `Zones: ${zoneCount}`,
     hasKickstand ? "Kickstand: yes" : null,
@@ -117,7 +128,7 @@ export function Configurator() {
   ].filter(Boolean).join(", ");
 
   const waMessage = encodeURIComponent(
-    `Hi Tapiko! Here's the design I configured on your site — ${configSummary} — I'd like to request a quote.`
+    `Hi Tapiko! Here's the design I configured — ${configSummary} — I'd like to request a quote.`
   );
   const waUrl = `https://wa.me/${CONTACT.whatsappNumber}?text=${waMessage}`;
 
@@ -134,10 +145,9 @@ export function Configurator() {
           <p className="mt-3 text-sm text-[color:var(--graphite)]">{t("configurator.subtitle")}</p>
         </div>
 
-        {/* Two-column layout */}
         <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
 
-          {/* ── Canvas ── */}
+          {/* Canvas */}
           <div className="relative overflow-hidden rounded-3xl bg-[#F5F3EE] aspect-square lg:aspect-auto lg:h-[540px]">
             {hasMounted ? (
               <WebGLBoundary fallback={
@@ -158,6 +168,13 @@ export function Configurator() {
                     pattern={pattern}
                     businessName={businessName}
                     isMobile={isMobile}
+                    thickness={thickness}
+                    buttonShape={buttonShape}
+                    fontStyle={fontStyle}
+                    kickstandStyle={kickstandStyle}
+                    shapeWidth={shapeWidth}
+                    shapeHeight={shapeHeight}
+                    cornerRadius={cornerRadius}
                   />
                 </Suspense>
               </WebGLBoundary>
@@ -165,7 +182,6 @@ export function Configurator() {
               <div className="h-full w-full bg-[#F5F3EE]" />
             )}
 
-            {/* Drag hint */}
             {!dragHintDismissed && hasMounted && (
               <button
                 type="button"
@@ -182,8 +198,8 @@ export function Configurator() {
             )}
           </div>
 
-          {/* ── Controls ── */}
-          <div className="flex flex-col gap-6 rounded-3xl border border-[color:var(--stone)]/50 bg-white p-6 shadow-sm">
+          {/* Controls */}
+          <div className="flex flex-col gap-5 rounded-3xl border border-[color:var(--stone)]/50 bg-white p-6 shadow-sm overflow-y-auto max-h-[540px] lg:max-h-[540px]">
 
             {/* Style presets */}
             <div>
@@ -197,6 +213,25 @@ export function Configurator() {
                     label={t(`configurator.presets.${p.key}`)}
                     active={activePreset === p.key}
                     onClick={() => applyPreset(p.key)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-[color:var(--stone)]/40" />
+
+            {/* Shape */}
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--graphite)]">
+                {t("configurator.shape.label")}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {BASE_SHAPES.map(s => (
+                  <Chip
+                    key={s.key}
+                    label={t(`configurator.shape.${s.key}`)}
+                    active={activeShape === s.key}
+                    onClick={() => applyShape(s.key as ShapeKey)}
                   />
                 ))}
               </div>
@@ -322,7 +357,6 @@ export function Configurator() {
               {t("configurator.cta")}
             </a>
 
-            {/* Disclaimer */}
             <p className="text-center text-[10px] leading-relaxed text-[color:var(--graphite)]/60">
               {t("configurator.disclaimer")}
             </p>

@@ -206,6 +206,13 @@
       "dots": "Puntos",
       "grain": "Grano"
     },
+    "shape": {
+      "label": "Forma",
+      "classic": "Clásica",
+      "rounded": "Redondeada",
+      "pill": "Cápsula",
+      "tag": "Etiqueta"
+    },
     "zones": { "label": "Zonas de toque" },
     "kickstand": { "label": "Soporte trasero" },
     "name": {

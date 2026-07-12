@@ -206,6 +206,13 @@
       "dots": "Dots",
       "grain": "Grain"
     },
+    "shape": {
+      "label": "Shape",
+      "classic": "Classic",
+      "rounded": "Rounded",
+      "pill": "Pill",
+      "tag": "Tag"
+    },
     "zones": { "label": "Tap zones" },
     "kickstand": { "label": "Kickstand" },
     "name": {

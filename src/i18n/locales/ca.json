@@ -206,6 +206,13 @@
       "dots": "Punts",
       "grain": "Gra"
     },
+    "shape": {
+      "label": "Forma",
+      "classic": "Clàssica",
+      "rounded": "Arrodonida",
+      "pill": "Càpsula",
+      "tag": "Etiqueta"
+    },
     "zones": { "label": "Zones de toc" },
     "kickstand": { "label": "Suport posterior" },
     "name": {
