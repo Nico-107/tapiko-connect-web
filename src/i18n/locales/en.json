@@ -14,7 +14,10 @@
     "title_post": "review.",
     "subhead": "Custom NFC plaques, designed and 3D-printed in Barcelona for restaurants, bars and cafés. One tap sends every guest exactly where you want them — reviews, socials, menu. No app, no QR, no friction.",
     "cta_primary": "Get a quote",
-    "cta_secondary": "See how it works"
+    "cta_secondary": "See how it works",
+    "cta_standard": "Standard plaque · from €19.99",
+    "cta_configurator": "Design your own",
+    "sub_note": "+ from €7/mo to update your tap destinations anytime"
   },
   "proof": {
     "title": "Trusted by Barcelona's best",

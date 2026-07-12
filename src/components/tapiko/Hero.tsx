@@ -53,9 +53,29 @@ export function Hero() {
               {t("hero.cta_secondary")}
             </a>
           </div>
+
+          {/* Secondary decision row */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            <a
+              href="#pricing"
+              className="inline-flex items-center rounded-full border border-[color:var(--ink)]/15 px-4 py-2 text-xs font-medium text-[color:var(--ink)] transition-colors hover:border-[color:var(--terra)]/60 hover:bg-[color:var(--terra)]/5"
+            >
+              {t("hero.cta_standard")}
+            </a>
+            <a
+              href="#configurator"
+              className="inline-flex items-center rounded-full border border-[color:var(--ink)]/15 px-4 py-2 text-xs font-medium text-[color:var(--ink)] transition-colors hover:border-[color:var(--ink)]/40"
+            >
+              {t("hero.cta_configurator")}
+            </a>
+          </div>
+          <p className="mt-2 text-[11px] text-[color:var(--graphite)]/50">
+            {t("hero.sub_note")}
+          </p>
+
           {/* Reassurance line */}
           <p
-            className="mt-5 text-[11px] tracking-wide text-[color:var(--graphite)]/55"
+            className="mt-4 text-[11px] tracking-wide text-[color:var(--graphite)]/55"
             style={{ fontFamily: "var(--font-mono)" }}
           >
             Designed & 3D-printed in Barcelona · Custom to your brand

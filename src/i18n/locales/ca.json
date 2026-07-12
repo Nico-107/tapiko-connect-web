@@ -14,7 +14,10 @@
     "title_post": "de cinc estrelles.",
     "subhead": "Plaques NFC a mida, dissenyades i impreses en 3D a Barcelona per a restaurants, bars i cafeteries. Un toc i cada client aterra exactament on tu vols: ressenyes, xarxes, carta. Sense app, sense QR, sense fricció.",
     "cta_primary": "Demana pressupost",
-    "cta_secondary": "Veure com funciona"
+    "cta_secondary": "Veure com funciona",
+    "cta_standard": "Placa estàndard · des de €19.99",
+    "cta_configurator": "Dissenya la teva",
+    "sub_note": "+ des de €7/mes per actualitzar els teus destins quan vulguis"
   },
   "proof": {
     "title": "Ens trien els millors locals de Barcelona",
