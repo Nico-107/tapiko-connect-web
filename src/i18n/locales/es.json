@@ -209,11 +209,32 @@
     "shape": {
       "label": "Forma",
       "classic": "Clásica",
+      "rounded_top": "Redondeada arriba",
+      "full_round": "Cápsula",
+      "tag": "Redonda"
+    },
+    "font": {
+      "label": "Tipografía",
+      "modern": "Moderna",
+      "serif": "Serif",
       "rounded": "Redondeada",
-      "pill": "Cápsula",
-      "tag": "Etiqueta"
+      "bold": "Negrita"
     },
     "zones": { "label": "Zonas de toque" },
+    "icons": {
+      "label": "Iconos de botón",
+      "zone": "Zona",
+      "maps": "Google Maps",
+      "google": "Google",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "menu": "Menú",
+      "website": "Web",
+      "review": "Reseña",
+      "message": "Mensaje",
+      "social": "Redes",
+      "share": "Compartir"
+    },
     "kickstand": { "label": "Soporte trasero" },
     "name": {
       "label": "Nombre de tu negocio",

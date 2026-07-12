@@ -1,12 +1,11 @@
 /**
- * Lazily-imported by Configurator.tsx so Three.js never loads during SSR.
- * Only rendered after hasMounted === true on the client.
+ * Lazily-imported by Configurator.tsx — Three.js stays out of SSR.
  */
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { Plaque3D } from "./Plaque3D";
-import type { Pattern, ZoneOption, ButtonShape, FontStyle, KickstandStyle } from "@/config/configurator";
+import type { Pattern, ZoneOption, ButtonShape, FontOption, KickstandStyle, ShapeKey, IconOption } from "@/config/configurator";
 
 interface Props {
   bodyColor:      string;
@@ -18,17 +17,19 @@ interface Props {
   isMobile:       boolean;
   thickness:      number;
   buttonShape:    ButtonShape;
-  fontStyle:      FontStyle;
+  fontOption:     FontOption;
   kickstandStyle: KickstandStyle;
+  shapeKey:       ShapeKey;
   shapeWidth:     number;
   shapeHeight:    number;
   cornerRadius:   number;
+  buttonIcons:    readonly IconOption[];
 }
 
 export default function ConfiguratorCanvas({
   bodyColor, accentColor, zoneCount, hasKickstand, pattern, businessName, isMobile,
-  thickness, buttonShape, fontStyle, kickstandStyle,
-  shapeWidth, shapeHeight, cornerRadius,
+  thickness, buttonShape, fontOption, kickstandStyle,
+  shapeKey, shapeWidth, shapeHeight, cornerRadius, buttonIcons,
 }: Props) {
   return (
     <Canvas
@@ -38,7 +39,6 @@ export default function ConfiguratorCanvas({
     >
       <color attach="background" args={["#F5F3EE"]} />
 
-      {/* Studio lighting — enough fill to keep dark materials readable */}
       <ambientLight intensity={0.88} />
       <directionalLight position={[4, 7, 4]}   intensity={0.90} />
       <directionalLight position={[-3, 2, -2]} intensity={0.60} />
@@ -55,11 +55,13 @@ export default function ConfiguratorCanvas({
           businessName={businessName}
           thickness={thickness}
           buttonShape={buttonShape}
-          fontStyle={fontStyle}
+          fontOption={fontOption}
           kickstandStyle={kickstandStyle}
+          shapeKey={shapeKey}
           shapeWidth={shapeWidth}
           shapeHeight={shapeHeight}
           cornerRadius={cornerRadius}
+          buttonIcons={buttonIcons}
         />
       </Suspense>
 

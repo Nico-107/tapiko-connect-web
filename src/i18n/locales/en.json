@@ -209,11 +209,32 @@
     "shape": {
       "label": "Shape",
       "classic": "Classic",
-      "rounded": "Rounded",
-      "pill": "Pill",
+      "rounded_top": "Rounded top",
+      "full_round": "Full round",
       "tag": "Tag"
     },
+    "font": {
+      "label": "Typography",
+      "modern": "Modern",
+      "serif": "Serif",
+      "rounded": "Rounded",
+      "bold": "Bold"
+    },
     "zones": { "label": "Tap zones" },
+    "icons": {
+      "label": "Button icons",
+      "zone": "Zone",
+      "maps": "Google Maps",
+      "google": "Google",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "menu": "Menu",
+      "website": "Website",
+      "review": "Review",
+      "message": "Message",
+      "social": "Social",
+      "share": "Share"
+    },
     "kickstand": { "label": "Kickstand" },
     "name": {
       "label": "Your business name",

@@ -3,17 +3,14 @@ import type { ErrorInfo, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { CONTACT } from "@/config/pricing";
 import {
-  STYLE_PRESETS,
-  BODY_COLORS,
-  ACCENT_COLORS,
-  PATTERNS,
-  ZONE_OPTIONS,
-  BASE_SHAPES,
+  STYLE_PRESETS, BODY_COLORS, ACCENT_COLORS, PATTERNS,
+  ZONE_OPTIONS, BASE_SHAPES, FONT_OPTIONS, ICON_OPTIONS,
 } from "@/config/configurator";
-import type { Pattern, ZoneOption, ButtonShape, FontStyle, KickstandStyle, ShapeKey } from "@/config/configurator";
+import type { Pattern, ZoneOption, ButtonShape, FontOption, KickstandStyle, ShapeKey, IconOption } from "@/config/configurator";
 
 const ConfiguratorCanvas = lazy(() => import("./ConfiguratorCanvas"));
 
+// ── Error boundary ────────────────────────────────────────────────────────────
 interface EBState { hasError: boolean }
 class WebGLBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, EBState> {
   state: EBState = { hasError: false };
@@ -22,19 +19,41 @@ class WebGLBoundary extends Component<{ children: ReactNode; fallback: ReactNode
   render() { return this.state.hasError ? this.props.fallback : this.props.children; }
 }
 
+// ── i18n key maps (handles hyphens in shape/font keys) ────────────────────────
+const SHAPE_I18N: Record<ShapeKey, string> = {
+  "classic":     "configurator.shape.classic",
+  "rounded-top": "configurator.shape.rounded_top",
+  "full-round":  "configurator.shape.full_round",
+  "tag":         "configurator.shape.tag",
+};
+const FONT_FAMILY_CSS: Record<FontOption, string> = {
+  modern:  "system-ui,-apple-system,sans-serif",
+  serif:   "Georgia,'Times New Roman',serif",
+  rounded: "'Trebuchet MS','Century Gothic',sans-serif",
+  bold:    "system-ui,-apple-system,sans-serif",
+};
+const FONT_WEIGHT_CSS: Record<FontOption, string> = {
+  modern: "500", serif: "400", rounded: "600", bold: "800",
+};
+// Emoji shorthand for icons in the picker
+const ICON_GLYPH: Record<IconOption, string> = {
+  maps: "📍", google: "🔵", instagram: "📷", tiktok: "♪",
+  menu: "☰",  website: "🌐", review: "⭐", message: "💬",
+  social: "❤", share: "↑",
+};
+
+// ── Primitive UI components ───────────────────────────────────────────────────
 function Swatch({ color, active, onClick }: { color: string; active: boolean; onClick: () => void }) {
   return (
     <button
-      type="button"
-      onClick={onClick}
+      type="button" onClick={onClick}
       className="relative h-7 w-7 rounded-full border-2 transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--terra)] focus-visible:ring-offset-2"
       style={{
         background: color,
         borderColor: active ? "var(--ink)" : "transparent",
         boxShadow: active ? "0 0 0 2px var(--paper), 0 0 0 4px var(--ink)" : undefined,
       }}
-      aria-pressed={active}
-      aria-label={color}
+      aria-pressed={active} aria-label={color}
     />
   );
 }
@@ -42,43 +61,78 @@ function Swatch({ color, active, onClick }: { color: string; active: boolean; on
 function Chip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
     <button
-      type="button"
-      onClick={onClick}
+      type="button" onClick={onClick} aria-pressed={active}
       className={[
         "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
         active
           ? "border-[color:var(--ink)] bg-[color:var(--ink)] text-[color:var(--paper)]"
           : "border-[color:var(--stone)] bg-transparent text-[color:var(--graphite)] hover:border-[color:var(--ink)]",
       ].join(" ")}
-      aria-pressed={active}
     >
       {label}
     </button>
   );
 }
 
-const DEFAULT_SHAPE = BASE_SHAPES[0];
+function FontChip({ fontOpt, active, label, onClick }: {
+  fontOpt: FontOption; active: boolean; label: string; onClick: () => void;
+}) {
+  return (
+    <button
+      type="button" onClick={onClick} aria-pressed={active}
+      className={[
+        "rounded-xl border px-3 py-2 text-sm transition-colors flex flex-col items-center gap-0.5 min-w-[58px]",
+        active
+          ? "border-[color:var(--ink)] bg-[color:var(--ink)] text-[color:var(--paper)]"
+          : "border-[color:var(--stone)] bg-transparent text-[color:var(--graphite)] hover:border-[color:var(--ink)]",
+      ].join(" ")}
+      style={{ fontFamily: FONT_FAMILY_CSS[fontOpt], fontWeight: FONT_WEIGHT_CSS[fontOpt] }}
+    >
+      <span className="text-base leading-none">Aa</span>
+      <span className="text-[10px] font-sans font-medium tracking-wide leading-none opacity-70" style={{ fontFamily: "system-ui", fontWeight: 500 }}>
+        {label}
+      </span>
+    </button>
+  );
+}
+
+// ── Defaults ──────────────────────────────────────────────────────────────────
+const DEFAULT_SHAPE   = BASE_SHAPES[0];
+const DEFAULT_ICONS: IconOption[] = ["maps", "google", "instagram", "website"];
 
 export function Configurator() {
   const { t } = useTranslation();
 
-  const [hasMounted, setHasMounted]             = useState(false);
-  const [isMobile,   setIsMobile]               = useState(false);
-  const [activePreset,  setActivePreset]         = useState<string>("minimalist");
-  const [activeShape,   setActiveShape]          = useState<ShapeKey>("classic");
-  const [bodyColor,     setBodyColor]            = useState("#F5F3EE");
-  const [accentColor,   setAccentColor]          = useState("#2A3A50");
-  const [pattern,       setPattern]              = useState<Pattern>("solid");
-  const [thickness,     setThickness]            = useState(0.10);
-  const [buttonShape,   setButtonShape]          = useState<ButtonShape>("square");
-  const [fontStyle,     setFontStyle]            = useState<FontStyle>("normal");
-  const [kickstandStyle, setKickstandStyle]      = useState<KickstandStyle>("thin");
-  const [shapeWidth,    setShapeWidth]           = useState(DEFAULT_SHAPE.width);
-  const [shapeHeight,   setShapeHeight]          = useState(DEFAULT_SHAPE.height);
-  const [cornerRadius,  setCornerRadius]         = useState(DEFAULT_SHAPE.cornerRadius);
-  const [zoneCount,     setZoneCount]            = useState<ZoneOption>(2);
-  const [hasKickstand,  setHasKickstand]         = useState(false);
-  const [businessName,  setBusinessName]         = useState("");
+  const [hasMounted,  setHasMounted]  = useState(false);
+  const [isMobile,    setIsMobile]    = useState(false);
+
+  // Style preset
+  const [activePreset, setActivePreset] = useState<string>("minimalist");
+
+  // Shape
+  const [activeShape,  setActiveShape]  = useState<ShapeKey>("classic");
+  const [shapeWidth,   setShapeWidth]   = useState(DEFAULT_SHAPE.width);
+  const [shapeHeight,  setShapeHeight]  = useState(DEFAULT_SHAPE.height);
+  const [cornerRadius, setCornerRadius] = useState(DEFAULT_SHAPE.cornerRadius);
+
+  // Colours & material
+  const [bodyColor,      setBodyColor]      = useState("#F5F3EE");
+  const [accentColor,    setAccentColor]    = useState("#2A3A50");
+  const [pattern,        setPattern]        = useState<Pattern>("solid");
+  const [thickness,      setThickness]      = useState(0.10);
+  const [buttonShape,    setButtonShape]    = useState<ButtonShape>("square");
+  const [kickstandStyle, setKickstandStyle] = useState<KickstandStyle>("thin");
+
+  // Typography
+  const [fontOption, setFontOption] = useState<FontOption>("modern");
+  const [activeFontPreset, setActiveFontPreset] = useState<FontOption>("modern");
+
+  // Zones & extras
+  const [zoneCount,    setZoneCount]    = useState<ZoneOption>(2);
+  const [hasKickstand, setHasKickstand] = useState(false);
+  const [businessName, setBusinessName] = useState("");
+  const [buttonIcons,  setButtonIcons]  = useState<IconOption[]>(DEFAULT_ICONS);
+
   const [dragHintDismissed, setDragHintDismissed] = useState(false);
 
   useEffect(() => {
@@ -86,6 +140,7 @@ export function Configurator() {
     setIsMobile(window.innerWidth < 768);
   }, []);
 
+  // ── Preset / shape / font apply ──────────────────────────────────────────
   function applyPreset(key: string) {
     const p = STYLE_PRESETS.find(s => s.key === key);
     if (!p) return;
@@ -95,8 +150,9 @@ export function Configurator() {
     setPattern(p.pattern as Pattern);
     setThickness(p.thickness);
     setButtonShape(p.buttonShape as ButtonShape);
-    setFontStyle(p.fontStyle as FontStyle);
     setKickstandStyle(p.kickstandStyle as KickstandStyle);
+    setFontOption(p.fontOption as FontOption);
+    setActiveFontPreset(p.fontOption as FontOption);
   }
 
   function applyShape(key: ShapeKey) {
@@ -108,6 +164,13 @@ export function Configurator() {
     setCornerRadius(s.cornerRadius);
   }
 
+  function handleFont(f: FontOption) {
+    setFontOption(f);
+    setActiveFontPreset(f);
+    setActivePreset(""); // detach from preset
+  }
+
+  // ── Manual overrides ──────────────────────────────────────────────────────
   function handleBodyColor(c: string)   { setBodyColor(c);   setActivePreset(""); }
   function handleAccentColor(c: string) { setAccentColor(c); setActivePreset(""); }
   function handlePattern(p: Pattern)    { setPattern(p);     setActivePreset(""); }
@@ -118,19 +181,29 @@ export function Configurator() {
     setZoneCount(next);
   }
 
+  function setIcon(zoneIdx: number, icon: IconOption) {
+    setButtonIcons(prev => {
+      const next = [...prev] as IconOption[];
+      next[zoneIdx] = icon;
+      return next;
+    });
+  }
+
+  // ── WhatsApp CTA ──────────────────────────────────────────────────────────
   const configSummary = [
-    activePreset ? `Style: ${activePreset}` : `Body: ${bodyColor}, Accent: ${accentColor}`,
+    activePreset ? `Style: ${activePreset}` : `Body: ${bodyColor}`,
     `Shape: ${activeShape}`,
+    `Font: ${fontOption}`,
     `Pattern: ${pattern}`,
     `Zones: ${zoneCount}`,
     hasKickstand ? "Kickstand: yes" : null,
     businessName ? `Name: ${businessName}` : null,
-  ].filter(Boolean).join(", ");
+    `Icons: ${buttonIcons.slice(0, zoneCount).join(", ")}`,
+  ].filter(Boolean).join(" · ");
 
-  const waMessage = encodeURIComponent(
-    `Hi Tapiko! Here's the design I configured — ${configSummary} — I'd like to request a quote.`
-  );
-  const waUrl = `https://wa.me/${CONTACT.whatsappNumber}?text=${waMessage}`;
+  const waUrl = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(
+    `Hi Tapiko! Here's my configured design — ${configSummary} — I'd like a quote.`
+  )}`;
 
   return (
     <section className="py-20 bg-[color:var(--paper)]" id="configurator">
@@ -148,7 +221,7 @@ export function Configurator() {
         <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
 
           {/* Canvas */}
-          <div className="relative overflow-hidden rounded-3xl bg-[#F5F3EE] aspect-square lg:aspect-auto lg:h-[540px]">
+          <div className="relative overflow-hidden rounded-3xl bg-[#F5F3EE] aspect-square lg:aspect-auto lg:h-[560px]">
             {hasMounted ? (
               <WebGLBoundary fallback={
                 <div className="flex h-full items-center justify-center text-sm text-[color:var(--graphite)]">
@@ -161,31 +234,24 @@ export function Configurator() {
                   </div>
                 }>
                   <ConfiguratorCanvas
-                    bodyColor={bodyColor}
-                    accentColor={accentColor}
-                    zoneCount={zoneCount}
-                    hasKickstand={hasKickstand}
-                    pattern={pattern}
-                    businessName={businessName}
-                    isMobile={isMobile}
-                    thickness={thickness}
-                    buttonShape={buttonShape}
-                    fontStyle={fontStyle}
+                    bodyColor={bodyColor} accentColor={accentColor}
+                    zoneCount={zoneCount} hasKickstand={hasKickstand}
+                    pattern={pattern} businessName={businessName}
+                    isMobile={isMobile} thickness={thickness}
+                    buttonShape={buttonShape} fontOption={fontOption}
                     kickstandStyle={kickstandStyle}
-                    shapeWidth={shapeWidth}
-                    shapeHeight={shapeHeight}
-                    cornerRadius={cornerRadius}
+                    shapeKey={activeShape}
+                    shapeWidth={shapeWidth} shapeHeight={shapeHeight}
+                    cornerRadius={cornerRadius} buttonIcons={buttonIcons}
                   />
                 </Suspense>
               </WebGLBoundary>
             ) : (
               <div className="h-full w-full bg-[#F5F3EE]" />
             )}
-
             {!dragHintDismissed && hasMounted && (
               <button
-                type="button"
-                onClick={() => setDragHintDismissed(true)}
+                type="button" onClick={() => setDragHintDismissed(true)}
                 className="pointer-events-auto absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 rounded-full bg-black/12 px-3 py-1.5 text-xs text-[color:var(--ink)]/70 backdrop-blur-sm transition-opacity hover:opacity-0"
                 aria-label="Dismiss hint"
               >
@@ -199,7 +265,7 @@ export function Configurator() {
           </div>
 
           {/* Controls */}
-          <div className="flex flex-col gap-5 rounded-3xl border border-[color:var(--stone)]/50 bg-white p-6 shadow-sm overflow-y-auto max-h-[540px] lg:max-h-[540px]">
+          <div className="flex flex-col gap-5 rounded-3xl border border-[color:var(--stone)]/50 bg-white p-6 shadow-sm overflow-y-auto lg:max-h-[560px]">
 
             {/* Style presets */}
             <div>
@@ -208,12 +274,8 @@ export function Configurator() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {STYLE_PRESETS.map(p => (
-                  <Chip
-                    key={p.key}
-                    label={t(`configurator.presets.${p.key}`)}
-                    active={activePreset === p.key}
-                    onClick={() => applyPreset(p.key)}
-                  />
+                  <Chip key={p.key} label={t(`configurator.presets.${p.key}`)}
+                    active={activePreset === p.key} onClick={() => applyPreset(p.key)} />
                 ))}
               </div>
             </div>
@@ -227,19 +289,15 @@ export function Configurator() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {BASE_SHAPES.map(s => (
-                  <Chip
-                    key={s.key}
-                    label={t(`configurator.shape.${s.key}`)}
-                    active={activeShape === s.key}
-                    onClick={() => applyShape(s.key as ShapeKey)}
-                  />
+                  <Chip key={s.key} label={t(SHAPE_I18N[s.key as ShapeKey])}
+                    active={activeShape === s.key} onClick={() => applyShape(s.key as ShapeKey)} />
                 ))}
               </div>
             </div>
 
             <hr className="border-[color:var(--stone)]/40" />
 
-            {/* Body color */}
+            {/* Body colour */}
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--graphite)]">
                 {t("configurator.body_color")}
@@ -251,7 +309,7 @@ export function Configurator() {
               </div>
             </div>
 
-            {/* Accent color */}
+            {/* Accent colour */}
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--graphite)]">
                 {t("configurator.accent_color")}
@@ -270,11 +328,27 @@ export function Configurator() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {PATTERNS.map(p => (
-                  <Chip
-                    key={p}
-                    label={t(`configurator.pattern.${p}`)}
-                    active={pattern === p}
-                    onClick={() => handlePattern(p)}
+                  <Chip key={p} label={t(`configurator.pattern.${p}`)}
+                    active={pattern === p} onClick={() => handlePattern(p)} />
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-[color:var(--stone)]/40" />
+
+            {/* Typography */}
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--graphite)]">
+                {t("configurator.font.label")}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {FONT_OPTIONS.map(f => (
+                  <FontChip
+                    key={f}
+                    fontOpt={f}
+                    label={t(`configurator.font.${f}`)}
+                    active={activeFontPreset === f}
+                    onClick={() => handleFont(f)}
                   />
                 ))}
               </div>
@@ -288,25 +362,54 @@ export function Configurator() {
                 {t("configurator.zones.label")}
               </p>
               <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => stepZone(-1)}
-                  disabled={zoneCount === ZONE_OPTIONS[0]}
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[color:var(--stone)] text-sm font-medium transition-colors hover:border-[color:var(--ink)] disabled:opacity-30"
-                >
+                <button type="button" onClick={() => stepZone(-1)} disabled={zoneCount === ZONE_OPTIONS[0]}
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[color:var(--stone)] text-sm font-medium transition-colors hover:border-[color:var(--ink)] disabled:opacity-30">
                   −
                 </button>
                 <span className="w-4 text-center text-sm font-semibold text-[color:var(--ink)]">{zoneCount}</span>
-                <button
-                  type="button"
-                  onClick={() => stepZone(1)}
-                  disabled={zoneCount === ZONE_OPTIONS[ZONE_OPTIONS.length - 1]}
-                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[color:var(--stone)] text-sm font-medium transition-colors hover:border-[color:var(--ink)] disabled:opacity-30"
-                >
+                <button type="button" onClick={() => stepZone(1)} disabled={zoneCount === ZONE_OPTIONS[ZONE_OPTIONS.length - 1]}
+                  className="flex h-7 w-7 items-center justify-center rounded-full border border-[color:var(--stone)] text-sm font-medium transition-colors hover:border-[color:var(--ink)] disabled:opacity-30">
                   +
                 </button>
               </div>
             </div>
+
+            {/* Icon picker — one row per active zone */}
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-[color:var(--graphite)]">
+                {t("configurator.icons.label")}
+              </p>
+              <div className="flex flex-col gap-2">
+                {Array.from({ length: zoneCount }, (_, zi) => (
+                  <div key={zi} className="flex items-center gap-2">
+                    <span className="w-14 shrink-0 text-xs text-[color:var(--graphite)]">
+                      {t("configurator.icons.zone")} {zi + 1}
+                    </span>
+                    <div className="flex flex-wrap gap-1">
+                      {ICON_OPTIONS.map(icon => (
+                        <button
+                          key={icon}
+                          type="button"
+                          title={t(`configurator.icons.${icon}`)}
+                          onClick={() => setIcon(zi, icon)}
+                          className={[
+                            "h-7 w-7 rounded-lg border text-sm transition-colors flex items-center justify-center",
+                            buttonIcons[zi] === icon
+                              ? "border-[color:var(--ink)] bg-[color:var(--ink)] text-[color:var(--paper)]"
+                              : "border-[color:var(--stone)] hover:border-[color:var(--ink)]",
+                          ].join(" ")}
+                          aria-pressed={buttonIcons[zi] === icon}
+                        >
+                          {ICON_GLYPH[icon]}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <hr className="border-[color:var(--stone)]/40" />
 
             {/* Kickstand */}
             <div className="flex items-center justify-between">
@@ -314,21 +417,17 @@ export function Configurator() {
                 {t("configurator.kickstand.label")}
               </p>
               <button
-                type="button"
-                role="switch"
-                aria-checked={hasKickstand}
+                type="button" role="switch" aria-checked={hasKickstand}
                 onClick={() => setHasKickstand(v => !v)}
                 className={[
                   "relative h-6 w-11 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--terra)] focus-visible:ring-offset-2",
                   hasKickstand ? "bg-[color:var(--ink)]" : "bg-[color:var(--stone)]",
                 ].join(" ")}
               >
-                <span
-                  className={[
-                    "absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform",
-                    hasKickstand ? "translate-x-5" : "translate-x-0",
-                  ].join(" ")}
-                />
+                <span className={[
+                  "absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform",
+                  hasKickstand ? "translate-x-5" : "translate-x-0",
+                ].join(" ")} />
               </button>
             </div>
 
@@ -338,22 +437,16 @@ export function Configurator() {
                 {t("configurator.name.label")}
               </label>
               <input
-                type="text"
-                maxLength={32}
-                value={businessName}
+                type="text" maxLength={32} value={businessName}
                 onChange={e => setBusinessName(e.target.value)}
                 placeholder={t("configurator.name.placeholder")}
                 className="w-full rounded-xl border border-[color:var(--stone)]/60 bg-[color:var(--paper)] px-3 py-2 text-sm text-[color:var(--ink)] placeholder:text-[color:var(--graphite)]/40 focus:border-[color:var(--ink)] focus:outline-none"
               />
             </div>
 
-            {/* WhatsApp CTA */}
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto block rounded-xl bg-[color:var(--terra)] px-4 py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90"
-            >
+            {/* CTA */}
+            <a href={waUrl} target="_blank" rel="noopener noreferrer"
+              className="mt-auto block rounded-xl bg-[color:var(--terra)] px-4 py-3 text-center text-sm font-semibold text-white transition-opacity hover:opacity-90">
               {t("configurator.cta")}
             </a>
 

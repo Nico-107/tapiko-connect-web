@@ -209,11 +209,32 @@
     "shape": {
       "label": "Forma",
       "classic": "Clàssica",
+      "rounded_top": "Arrodonida dalt",
+      "full_round": "Càpsula",
+      "tag": "Rodona"
+    },
+    "font": {
+      "label": "Tipografia",
+      "modern": "Moderna",
+      "serif": "Serif",
       "rounded": "Arrodonida",
-      "pill": "Càpsula",
-      "tag": "Etiqueta"
+      "bold": "Negreta"
     },
     "zones": { "label": "Zones de toc" },
+    "icons": {
+      "label": "Icones dels botons",
+      "zone": "Zona",
+      "maps": "Google Maps",
+      "google": "Google",
+      "instagram": "Instagram",
+      "tiktok": "TikTok",
+      "menu": "Menú",
+      "website": "Web",
+      "review": "Ressenya",
+      "message": "Missatge",
+      "social": "Xarxes",
+      "share": "Compartir"
+    },
     "kickstand": { "label": "Suport posterior" },
     "name": {
       "label": "Nom del teu negoci",
