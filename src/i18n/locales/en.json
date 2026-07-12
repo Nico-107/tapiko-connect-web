@@ -9,12 +9,39 @@
   },
   "hero": {
     "eyebrow": "Barcelona · Custom NFC objects",
-    "title_pre": "Objects that",
-    "title_accent": "greet",
-    "title_post": "your customers.",
-    "subhead": "We design and 3D-print bespoke NFC plaques for restaurants, bars and cafés. One tap sends every guest exactly where you want them — reviews, socials, menu.",
+    "title_pre": "Turn every guest into a",
+    "title_accent": "five-star",
+    "title_post": "review.",
+    "subhead": "Custom NFC plaques, designed and 3D-printed in Barcelona for restaurants, bars and cafés. One tap sends every guest exactly where you want them — reviews, socials, menu. No app, no QR, no friction.",
     "cta_primary": "Get a quote",
     "cta_secondary": "See how it works"
+  },
+  "proof": {
+    "title": "Trusted by Barcelona's best",
+    "logos": {
+      "l1": "Deriva",
+      "l2": "Kalma",
+      "l3": "Casa Vermut",
+      "l4": "Noctámbula",
+      "l5": "Verd"
+    },
+    "testimonials": {
+      "t1": {
+        "quote": "We tripled our Google reviews in the first month. Guests love that it feels like an object, not a QR sticker.",
+        "name": "Marta Puig",
+        "role": "Owner · Bar Deriva"
+      },
+      "t2": {
+        "quote": "It sits on the counter like a piece of the brand. Nobody asks what it is — they just tap.",
+        "name": "Iván Ruiz",
+        "role": "Founder · Kalma Roasters"
+      },
+      "t3": {
+        "quote": "The design felt tailored to us from the first sketch. Worth every euro.",
+        "name": "Clara Ferrer",
+        "role": "Manager · Verd Brunch"
+      }
+    }
   },
   "how": {
     "eyebrow": "How it works",
@@ -36,28 +63,38 @@
   "pricing": {
     "eyebrow": "Pricing",
     "title": "Choose the plaque that fits your counter.",
-    "note": "Final pricing depends on design complexity and volume. All tiers include a custom concept and Barcelona-made production.",
+    "note": "Final price depends on design complexity and volume. Multiple locations? Ask about chain pricing.",
     "popular": "Most popular",
     "from": "from",
     "cta": "Request a quote",
+    "plus": {
+      "eyebrow": "Optional add-on",
+      "name": "Tapiko Plus",
+      "desc": "Change your tap destinations anytime — swap a review link for a seasonal promo — plus simple tap analytics and priority support.",
+      "note": "Per location · cancel anytime"
+    },
+    "chain": {
+      "title": "Restaurant group or multiple locations? Get custom pricing.",
+      "cta": "Talk to us"
+    },
     "tiers": {
       "essential": {
         "name": "Essential",
         "zones": "1 tap zone",
-        "desc": "A single-action plaque — perfect for driving Google reviews.",
+        "desc": "One custom plaque, one NFC action. Perfect for driving Google reviews.",
         "features": ["One embedded NFC chip", "Custom-designed shape & finish", "Programmed & ready to place"]
       },
       "signature": {
         "name": "Signature",
         "zones": "2 tap zones",
-        "desc": "Two actions on one object — reviews plus Instagram, for example.",
+        "desc": "Two actions on one object — reviews plus Instagram, for example. Fully custom design.",
         "features": ["Two embedded NFC chips", "Refined multi-zone design", "Analytics-friendly short links"]
       },
       "pro": {
         "name": "Pro",
-        "zones": "3+ tap zones",
-        "desc": "The full experience — reviews, socials, menu, wifi, all in one piece.",
-        "features": ["Multiple embedded NFC chips", "Premium finish & priority lead time", "Editable destinations for life"]
+        "zones": "3 tap zones",
+        "desc": "Full multi-action plaque — reviews, socials and menu — premium finish and priority turnaround.",
+        "features": ["Three embedded NFC chips", "Premium finish & priority lead time", "Editable destinations for life"]
       }
     }
   },
@@ -66,12 +103,12 @@
     "title": "A few pieces we've made.",
     "subtitle": "Every plaque is designed from scratch. No two look alike.",
     "items": {
-      "1": "Lumière — Eixample bistro",
-      "2": "Santa Eulàlia — Brunch & coffee",
-      "3": "Marina — Barceloneta restaurant",
-      "4": "Sol — Tapas & vermut",
-      "5": "Café Floreta — Eixample",
-      "6": "El Pati — Café & garden"
+      "deriva": "Bar Deriva — reviews + Instagram",
+      "coffee": "Kalma Roasters — reviews + menu",
+      "tapas": "Casa Vermut — reviews + wifi + menu",
+      "cocktail": "Noctámbula — Instagram + cocktail list",
+      "brunch": "Verd Brunch — reviews + Instagram",
+      "pizza": "Nonna Pina — reviews + delivery"
     }
   },
   "case": {
@@ -117,6 +154,32 @@
       "body": "We'll walk through your brand and sketch a first idea live.",
       "cta": "Book a call",
       "placeholder": "[ Calendly embed slot ]"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Everything you might be wondering.",
+    "items": {
+      "how": {
+        "q": "How does the NFC work?",
+        "a": "Each tap zone contains a small NFC chip programmed to open a URL. When a phone comes within a couple of centimetres, that URL opens instantly in the browser."
+      },
+      "app": {
+        "q": "Do customers need an app?",
+        "a": "No. Modern iPhones and Android phones read NFC natively — no app, no setup, no scan. Just tap."
+      },
+      "time": {
+        "q": "How long does it take?",
+        "a": "Typical lead time is 7–14 days from brief to a finished plaque on your counter. Rush turnaround is available on the Pro tier."
+      },
+      "editable": {
+        "q": "Can I change where it links to later?",
+        "a": "Yes. With Tapiko Plus you can update any tap destination from your dashboard — swap a review link for a seasonal promo whenever you like."
+      },
+      "durable": {
+        "q": "Is it durable enough for a bar?",
+        "a": "Yes. We print in PLA / PETG with a sealed matte finish. It handles spills, wipes and daily counter life — treat it like a nice ceramic object."
+      }
     }
   },
   "footer": {
