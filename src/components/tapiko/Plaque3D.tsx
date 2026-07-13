@@ -422,7 +422,7 @@ export function Plaque3D({
 
       {/* Kickstand */}
       {hasKickstand && (
-        <group position={[0, -(shapeHeight / 2) + 0.05, -(thickness / 2) - 0.01]} rotation={[Math.PI * 0.22, 0, 0]}>
+        <group position={[0, -(shapeHeight / 2) - 0.02, -(thickness / 2) - 0.01]} rotation={[Math.PI * 0.22, 0, 0]}>
           <mesh position={[0, -(KS.len / 2), 0]}>
             <boxGeometry args={[KS.w, KS.len, KS.d]} />
             <primitive object={bodyMat} attach="material" />

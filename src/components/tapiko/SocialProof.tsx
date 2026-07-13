@@ -1,8 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Reveal } from "./Reveal";
 
-const LOGO_SLOTS = ["l1", "l2", "l3", "l4", "l5"] as const;
-const TESTIMONIALS = ["t1", "t2", "t3"] as const;
+const SLOT_COUNT = 5;
 
 export function SocialProof() {
   const { t } = useTranslation();
@@ -11,47 +10,30 @@ export function SocialProof() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
           <p className="eyebrow text-center text-[color:var(--paper)]/60">
-            {t("proof.title")}
+            {t("proof.eyebrow")}
           </p>
-          <div className="mt-8 grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-5">
-            {LOGO_SLOTS.map((k) => (
+          <h2
+            className="mt-4 text-center text-2xl font-medium text-[color:var(--paper)] sm:text-3xl"
+            style={{ fontFamily: "var(--font-serif)" }}
+          >
+            {t("proof.title")}
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-center text-base text-[color:var(--paper)]/60">
+            {t("proof.body")}
+          </p>
+          <div className="mt-10 grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-5">
+            {Array.from({ length: SLOT_COUNT }).map((_, i) => (
               <div
-                key={k}
+                key={i}
                 className="flex h-14 items-center justify-center rounded-xl border border-dashed border-white/20 px-4"
               >
-                <span
-                  className="text-lg tracking-tight text-white/40"
-                  style={{ fontFamily: "var(--font-serif)" }}
-                >
-                  {t(`proof.logos.${k}`)}
+                <span className="text-center text-xs text-white/30">
+                  {t("proof.slot_label")}
                 </span>
               </div>
             ))}
           </div>
         </Reveal>
-
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {TESTIMONIALS.map((k, i) => (
-            <Reveal key={k} delay={i * 90}>
-              <figure className="flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-6">
-                <blockquote
-                  className="text-lg leading-relaxed text-[color:var(--paper)]"
-                  style={{ fontFamily: "var(--font-serif)" }}
-                >
-                  "{t(`proof.testimonials.${k}.quote`)}"
-                </blockquote>
-                <figcaption className="mt-6 border-t border-white/15 pt-4 text-sm">
-                  <span className="block font-medium text-[color:var(--paper)]">
-                    {t(`proof.testimonials.${k}.name`)}
-                  </span>
-                  <span className="block text-[color:var(--paper)]/50">
-                    {t(`proof.testimonials.${k}.role`)}
-                  </span>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );

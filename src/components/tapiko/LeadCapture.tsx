@@ -43,31 +43,28 @@ export function LeadCapture() {
                 </span>
               </a>
 
-              <div id="booking" className="rounded-2xl border border-white/15 bg-white/8 p-5">
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--signal)]/15 text-[color:var(--signal)]">
-                    <CalendarClock size={20} strokeWidth={1.6} />
+              <a
+                id="booking"
+                href={waHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-4 rounded-2xl border border-white/15 bg-white/8 p-5 transition-colors hover:border-white/30"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[color:var(--signal)]/15 text-[color:var(--signal)]">
+                  <CalendarClock size={20} strokeWidth={1.6} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-base font-medium text-[color:var(--paper)]">
+                    {t("lead.call.title")}
                   </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-base font-medium text-[color:var(--paper)]">
-                      {t("lead.call.title")}
-                    </span>
-                    <span className="block text-sm text-[color:var(--paper)]/60">
-                      {t("lead.call.body")}
-                    </span>
+                  <span className="block text-sm text-[color:var(--paper)]/60">
+                    {t("lead.call.body")}
                   </span>
-                  <a
-                    href={CONTACT.bookingUrl}
-                    className="eyebrow shrink-0 rounded-full bg-[color:var(--paper)] px-3 py-2 text-[color:var(--ink)]"
-                  >
-                    {t("lead.call.cta")}
-                  </a>
-                </div>
-                {/* CALENDLY EMBED SLOT — drop the Calendly inline widget script/iframe here */}
-                <div className="mt-4 flex h-24 items-center justify-center rounded-xl border border-dashed border-white/20 text-xs text-white/30">
-                  {t("lead.call.placeholder")}
-                </div>
-              </div>
+                </span>
+                <span className="eyebrow shrink-0 rounded-full bg-[color:var(--paper)] px-3 py-2 text-[color:var(--ink)]">
+                  {t("lead.call.cta")}
+                </span>
+              </a>
             </div>
           </Reveal>
 

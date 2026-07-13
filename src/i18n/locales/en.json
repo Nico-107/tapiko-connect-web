@@ -20,31 +20,10 @@
     "sub_note": "+ from €7/mo to update your tap destinations anytime"
   },
   "proof": {
-    "title": "Trusted by Barcelona's best",
-    "logos": {
-      "l1": "Deriva",
-      "l2": "Kalma",
-      "l3": "Casa Vermut",
-      "l4": "Noctámbula",
-      "l5": "Verd"
-    },
-    "testimonials": {
-      "t1": {
-        "quote": "We tripled our Google reviews in the first month. Guests love that it feels like an object, not a QR sticker.",
-        "name": "Marta Puig",
-        "role": "Owner · Bar Deriva"
-      },
-      "t2": {
-        "quote": "It sits on the counter like a piece of the brand. Nobody asks what it is — they just tap.",
-        "name": "Iván Ruiz",
-        "role": "Founder · Kalma Roasters"
-      },
-      "t3": {
-        "quote": "The design felt tailored to us from the first sketch. Worth every euro.",
-        "name": "Clara Ferrer",
-        "role": "Manager · Verd Brunch"
-      }
-    }
+    "eyebrow": "Early access",
+    "title": "Building Tapiko for Barcelona's independent restaurants",
+    "body": "We're in private pilot with a small group of founding venues. Interested in being among the first?",
+    "slot_label": "Founding partner spot"
   },
   "how": {
     "eyebrow": "How it works",
@@ -150,6 +129,8 @@
       "message": "Tell us about your space",
       "submit": "Send message",
       "sent": "Thanks — we'll be in touch shortly.",
+      "error": "Something went wrong — please try again.",
+      "retry": "Try again",
       "tier_placeholder": "Choose an option"
     },
     "whatsapp": {
@@ -159,9 +140,8 @@
     },
     "call": {
       "title": "Book a 20-minute call",
-      "body": "We'll walk through your brand and sketch a first idea live.",
-      "cta": "Book a call",
-      "placeholder": "[ Calendly embed slot ]"
+      "body": "Booking link coming soon — message us on WhatsApp to schedule.",
+      "cta": "Schedule via WhatsApp"
     }
   },
   "faq": {

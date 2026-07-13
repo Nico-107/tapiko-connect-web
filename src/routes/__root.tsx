@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import i18n from "../i18n";
 
 function NotFoundComponent() {
   return (
@@ -83,6 +84,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Tapiko — Custom NFC plaques, designed in Barcelona" },
       { property: "og:description", content: "Beautiful physical objects with embedded NFC. One tap, one action — reviews, followers, menu." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "/og-image.svg" },
+      { property: "og:url", content: "https://tapiko-connect-web.vercel.app" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -121,6 +124,15 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const syncLang = (lng: string) => {
+      document.documentElement.lang = lng.slice(0, 2);
+    };
+    syncLang(i18n.resolvedLanguage ?? "en");
+    i18n.on("languageChanged", syncLang);
+    return () => { i18n.off("languageChanged", syncLang); };
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

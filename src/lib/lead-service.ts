@@ -1,3 +1,7 @@
+// ⚠️  Replace with your real Formspree endpoint ID before launch.
+// Get it at https://formspree.io → your form → Integration → Endpoint
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mpqvzedg";
+
 export interface LeadPayload {
   name: string;
   business: string;
@@ -7,11 +11,22 @@ export interface LeadPayload {
   locale?: string;
 }
 
-// TODO: wire to real endpoint (server function / email API / CRM webhook).
-// Destination email: 011107miko@gmail.com
+// Submissions are forwarded by Formspree to 011107.com@gmail.com.
+// View all submissions at: https://formspree.io → Dashboard → your form.
 export async function submitLead(payload: LeadPayload): Promise<{ ok: true }> {
-  // eslint-disable-next-line no-console
-  console.log("[Tapiko] submitLead ->", payload);
-  await new Promise((r) => setTimeout(r, 600));
+  const res = await fetch(FORMSPREE_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error((data as { error?: string }).error ?? `Formspree error ${res.status}`);
+  }
+
   return { ok: true };
 }

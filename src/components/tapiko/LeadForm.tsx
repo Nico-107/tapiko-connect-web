@@ -9,7 +9,7 @@ const TIER_OPTIONS = [
 
 export function LeadForm() {
   const { t, i18n } = useTranslation();
-  const [state, setState] = useState<"idle" | "loading" | "done">("idle");
+  const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [values, setValues] = useState({
     name: "",
     business: "",
@@ -26,8 +26,12 @@ export function LeadForm() {
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setState("loading");
-    await submitLead({ ...values, locale: i18n.resolvedLanguage });
-    setState("done");
+    try {
+      await submitLead({ ...values, locale: i18n.resolvedLanguage });
+      setState("done");
+    } catch {
+      setState("error");
+    }
   }
 
   const inputCls =
@@ -64,12 +68,21 @@ export function LeadForm() {
         <span className="sr-only">{t("lead.form.message")}</span>
         <textarea rows={5} className={inputCls} placeholder={t("lead.form.message")} value={values.message} onChange={set("message")} />
       </label>
+      {state === "error" && (
+        <p className="text-sm text-red-600">{t("lead.form.error")}</p>
+      )}
       <button
         type="submit"
-        disabled={state !== "idle"}
+        disabled={state === "loading" || state === "done"}
         className="mt-2 inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-6 py-3.5 text-sm font-medium text-[color:var(--paper)] transition-transform hover:-translate-y-0.5 disabled:opacity-70"
       >
-        {state === "done" ? t("lead.form.sent") : state === "loading" ? "…" : t("lead.form.submit")}
+        {state === "done"
+          ? t("lead.form.sent")
+          : state === "loading"
+          ? "…"
+          : state === "error"
+          ? t("lead.form.retry")
+          : t("lead.form.submit")}
       </button>
     </form>
   );

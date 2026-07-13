@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "@tanstack/react-router";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CONTACT } from "@/config/pricing";
 
@@ -34,7 +35,11 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 flex flex-col-reverse items-start justify-between gap-4 border-t border-[color:var(--stone)] pt-6 md:flex-row md:items-center">
-          <p className="text-xs text-[color:var(--graphite)]">{t("footer.rights")}</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <p className="text-xs text-[color:var(--graphite)]">{t("footer.rights")}</p>
+            <Link to="/privacy" className="text-xs text-[color:var(--graphite)] hover:text-[color:var(--terra)]">Privacy</Link>
+            <Link to="/terms" className="text-xs text-[color:var(--graphite)] hover:text-[color:var(--terra)]">Terms</Link>
+          </div>
           <LanguageSwitcher compact />
         </div>
       </div>

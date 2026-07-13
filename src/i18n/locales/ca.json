@@ -20,31 +20,10 @@
     "sub_note": "+ des de €7/mes per actualitzar els teus destins quan vulguis"
   },
   "proof": {
-    "title": "Ens trien els millors locals de Barcelona",
-    "logos": {
-      "l1": "Deriva",
-      "l2": "Kalma",
-      "l3": "Casa Vermut",
-      "l4": "Noctámbula",
-      "l5": "Verd"
-    },
-    "testimonials": {
-      "t1": {
-        "quote": "Vam triplicar les ressenyes de Google el primer mes. Als clients els encanta que sigui un objecte de veritat, no un adhesiu amb QR.",
-        "name": "Marta Puig",
-        "role": "Propietària · Bar Deriva"
-      },
-      "t2": {
-        "quote": "Viu a la barra com una peça més de la marca. Ningú pregunta què és: només toquen.",
-        "name": "Iván Ruiz",
-        "role": "Fundador · Kalma Roasters"
-      },
-      "t3": {
-        "quote": "El disseny ens encaixava des del primer esbós. Val cada euro.",
-        "name": "Clara Ferrer",
-        "role": "Encarregada · Verd Brunch"
-      }
-    }
+    "eyebrow": "Accés anticipat",
+    "title": "Construïm Tapiko per als locals independents de Barcelona",
+    "body": "Estem en pilot privat amb un grup reduït de locals fundadors. T'interessa ser el primer al teu barri?",
+    "slot_label": "Plaça per a soci fundador"
   },
   "how": {
     "eyebrow": "Com funciona",
@@ -150,6 +129,8 @@
       "message": "Explica'ns alguna cosa del teu espai",
       "submit": "Enviar missatge",
       "sent": "Gràcies, t'escrivim de seguida.",
+      "error": "Alguna cosa ha fallat, torna-ho a intentar.",
+      "retry": "Torna-ho a intentar",
       "tier_placeholder": "Tria una opció"
     },
     "whatsapp": {
@@ -159,9 +140,8 @@
     },
     "call": {
       "title": "Reserva una trucada de 20 minuts",
-      "body": "Repassem la teva marca i esbossem una primera idea en directe.",
-      "cta": "Reservar trucada",
-      "placeholder": "[ Espai per a Calendly ]"
+      "body": "Enllaç de reserva aviat disponible — escriu-nos per WhatsApp per agendar.",
+      "cta": "Agendar per WhatsApp"
     }
   },
   "faq": {
