@@ -311,7 +311,7 @@ export function Catalog() {
   const [open, setOpen] = useState<CatalogProduct | null>(null);
 
   return (
-    <section id="catalog" className="bg-[color:var(--paper)] py-24 sm:py-32">
+    <section id="product" className="bg-[color:var(--paper)] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         {/* header */}
         <Reveal>

@@ -7,6 +7,7 @@ import tapas from "@/assets/gallery-tapas.jpg";
 import cocktail from "@/assets/gallery-cocktail.jpg";
 import brunch from "@/assets/gallery-brunch.jpg";
 import pizza from "@/assets/gallery-pizza.jpg";
+import caseImg from "@/assets/case-bar-deriva.jpg";
 
 const ITEMS: { id: string; src: string; ratio: string }[] = [
   { id: "deriva", src: deriva, ratio: "4 / 5" },
@@ -62,23 +63,38 @@ export function Gallery() {
             );
           })}
         </div>
+      </div>
 
-        <Reveal>
-          <div className="mt-14 flex flex-col items-center gap-4 border-t border-[color:var(--stone)]/40 pt-12 text-center">
-            <p className="max-w-sm text-base text-[color:var(--graphite)]">
-              {t("gallery.configurator_cta")}
-            </p>
-            <a
-              href="#configurator"
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--ink)]/20 px-5 py-2.5 text-sm font-medium text-[color:var(--ink)] transition-colors hover:border-[color:var(--ink)]"
-            >
-              {t("common.design_your_own")}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-          </div>
-        </Reveal>
+      {/* Case study — full-bleed dark highlight beneath the grid */}
+      <div className="mt-24 bg-[color:var(--ink)] py-24 sm:py-32">
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-16 lg:px-10">
+          <Reveal>
+            <ProductImage
+              src={caseImg}
+              alt="Bar Deriva custom terracotta NFC plaque on a bar counter"
+              ratio="4 / 5"
+              className="shadow-[0_40px_80px_-40px_rgba(0,0,0,0.6)]"
+            />
+          </Reveal>
+          <Reveal delay={100}>
+            <p className="eyebrow text-[color:var(--terra)]">{t("case.eyebrow")}</p>
+            <h2 className="mt-4 text-4xl font-medium leading-tight text-[color:var(--paper)] sm:text-5xl">
+              {t("case.title")}
+            </h2>
+            <dl className="mt-10 space-y-8">
+              {(["brief", "solution", "result"] as const).map((k) => (
+                <div key={k} className="border-t border-white/15 pt-6">
+                  <dt className="eyebrow text-[color:var(--paper)]/60">
+                    {t(`case.${k}_label`)}
+                  </dt>
+                  <dd className="mt-3 max-w-xl text-lg leading-relaxed text-[color:var(--paper)]/90">
+                    {t(`case.${k}`)}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
