@@ -238,6 +238,44 @@
     "title": "See your brand on a Tapiko plaque.",
     "body": "Pick a style, swap the colours, and see exactly how your plaque could look — no commitment required."
   },
+  "catalog": {
+    "eyebrow": "Products",
+    "title": "Every format. Every space.",
+    "subtitle": "Click any product to explore colour variants.",
+    "cta": "Get a quote for this",
+    "design_own_pre": "Don't see what you need?",
+    "design_own_link": "Design your own in the configurator.",
+    "products": {
+      "plaque-single": {
+        "name": "Tapiko Single",
+        "desc": "One tap zone. Clean, minimal, ready for any counter."
+      },
+      "plaque-double": {
+        "name": "Tapiko Double",
+        "desc": "Two tap zones — perfect for reviews + social."
+      },
+      "plaque-triple": {
+        "name": "Tapiko Triple",
+        "desc": "Three tap zones. Reviews, social, menu — all at once."
+      },
+      "wall-plate": {
+        "name": "Wall Plate",
+        "desc": "Mounts flat against a wall. Ideal for entryways and bars."
+      },
+      "table-tent": {
+        "name": "Table Tent",
+        "desc": "Folds flat, stands proud. Great for tables and reception desks."
+      },
+      "coaster-review": {
+        "name": "Coaster · Reviews",
+        "desc": "Leave it under a glass. Every drink becomes a review prompt."
+      },
+      "coaster-menu": {
+        "name": "Coaster · Menu",
+        "desc": "A tap opens your full digital menu — no paper, no QR."
+      }
+    }
+  },
   "footer": {
     "tagline": "Custom NFC objects, designed and printed in Barcelona.",
     "rights": "© 2026 Tapiko · Barcelona",

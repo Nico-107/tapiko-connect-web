@@ -6,6 +6,7 @@ import { SocialProof } from "@/components/tapiko/SocialProof";
 import { HowItWorks } from "@/components/tapiko/HowItWorks";
 import { Product } from "@/components/tapiko/Product";
 import { Pricing } from "@/components/tapiko/Pricing";
+import { Catalog } from "@/components/tapiko/Catalog";
 import { Configurator } from "@/components/tapiko/Configurator";
 import { Gallery } from "@/components/tapiko/Gallery";
 import { CaseStudy } from "@/components/tapiko/CaseStudy";
@@ -29,6 +30,7 @@ function Index() {
         <HowItWorks />
         <Product />
         <Pricing />
+        <Catalog />
         <Configurator />
         <Gallery />
         <CaseStudy />

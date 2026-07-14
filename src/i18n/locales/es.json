@@ -238,6 +238,44 @@
     "title": "Mira cómo queda tu marca en una placa Tapiko.",
     "body": "Elige un estilo, cambia los colores y comprueba cómo podría quedar — sin ningún compromiso."
   },
+  "catalog": {
+    "eyebrow": "Productos",
+    "title": "Todos los formatos. Todos los espacios.",
+    "subtitle": "Haz clic en cualquier producto para explorar variantes de color.",
+    "cta": "Pedir presupuesto para esto",
+    "design_own_pre": "¿No encuentras lo que necesitas?",
+    "design_own_link": "Diseña la tuya en el configurador.",
+    "products": {
+      "plaque-single": {
+        "name": "Tapiko Simple",
+        "desc": "Una zona de toque. Limpio, minimalista, listo para cualquier barra."
+      },
+      "plaque-double": {
+        "name": "Tapiko Doble",
+        "desc": "Dos zonas de toque — perfecto para reseñas + redes."
+      },
+      "plaque-triple": {
+        "name": "Tapiko Triple",
+        "desc": "Tres zonas de toque. Reseñas, redes, carta — todo a la vez."
+      },
+      "wall-plate": {
+        "name": "Placa de pared",
+        "desc": "Se monta plana en la pared. Ideal para entradas y barras."
+      },
+      "table-tent": {
+        "name": "Caballete de mesa",
+        "desc": "Plegado plano, erguido sobre la mesa. Ideal para mesas y recepciones."
+      },
+      "coaster-review": {
+        "name": "Posavasos · Reseñas",
+        "desc": "Déjalo bajo un vaso. Cada bebida invita a dejar una reseña."
+      },
+      "coaster-menu": {
+        "name": "Posavasos · Carta",
+        "desc": "Un toque abre tu carta digital completa — sin papel, sin QR."
+      }
+    }
+  },
   "footer": {
     "tagline": "Objetos NFC a medida, diseñados e impresos en Barcelona.",
     "rights": "© 2026 Tapiko · Barcelona",

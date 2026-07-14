@@ -238,6 +238,44 @@
     "title": "Veu la teva marca en una placa Tapiko.",
     "body": "Tria un estil, canvia els colors i comprova com quedaria — sense cap compromís."
   },
+  "catalog": {
+    "eyebrow": "Productes",
+    "title": "Tots els formats. Tots els espais.",
+    "subtitle": "Fes clic a qualsevol producte per explorar variants de color.",
+    "cta": "Demana pressupost per a això",
+    "design_own_pre": "No trobes el que necessites?",
+    "design_own_link": "Dissenya la teva al configurador.",
+    "products": {
+      "plaque-single": {
+        "name": "Tapiko Simple",
+        "desc": "Una zona de toc. Net, minimalista, llest per a qualsevol barra."
+      },
+      "plaque-double": {
+        "name": "Tapiko Doble",
+        "desc": "Dues zones de toc — perfecte per a ressenyes + xarxes."
+      },
+      "plaque-triple": {
+        "name": "Tapiko Triple",
+        "desc": "Tres zones de toc. Ressenyes, xarxes, carta — tot alhora."
+      },
+      "wall-plate": {
+        "name": "Placa de paret",
+        "desc": "S'enganxa plana a la paret. Ideal per a entrades i barres."
+      },
+      "table-tent": {
+        "name": "Cavallete de taula",
+        "desc": "Plegat pla, dret sobre la taula. Ideal per a taules i recepcions."
+      },
+      "coaster-review": {
+        "name": "Posagots · Ressenyes",
+        "desc": "Deixa'l sota un got. Cada beguda convida a deixar una ressenya."
+      },
+      "coaster-menu": {
+        "name": "Posagots · Carta",
+        "desc": "Un toc obre la teva carta digital completa — sense paper, sense QR."
+      }
+    }
+  },
   "footer": {
     "tagline": "Objectes NFC a mida, dissenyats i impresos a Barcelona.",
     "rights": "© 2026 Tapiko · Barcelona",
