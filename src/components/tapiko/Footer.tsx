@@ -39,6 +39,13 @@ export function Footer() {
             <p className="text-xs text-[color:var(--graphite)]">{t("footer.rights")}</p>
             <Link to="/privacy" className="text-xs text-[color:var(--graphite)] hover:text-[color:var(--terra)]">Privacy</Link>
             <Link to="/terms" className="text-xs text-[color:var(--graphite)] hover:text-[color:var(--terra)]">Terms</Link>
+            <span className="text-xs text-[color:var(--graphite)]/40">·</span>
+            <p className="text-xs text-[color:var(--graphite)]">
+              Built by{' '}
+              <a href="https://nico-portfolio-gold.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-[color:var(--terra)]">
+                Mikołaj Szczełkun
+              </a>
+            </p>
           </div>
           <LanguageSwitcher compact />
         </div>
