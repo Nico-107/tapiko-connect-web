@@ -31,8 +31,44 @@ export function Nav() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10">
-        <a href="#top" className="font-serif text-2xl font-medium tracking-tight text-[color:var(--ink)]" style={{ fontFamily: "var(--font-serif)" }}>
-          Tapiko<span className="text-[color:var(--terra)]">.</span>
+        <a href="#top" className="flex items-center gap-3">
+          {/* Brand mark — full colour on paper, reversed on dark hero */}
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 64 64"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M28 49 A13 13 0 0 0 15 36"
+              stroke={scrolled ? "#0B1F3A" : "#F5F3EE"}
+              strokeWidth="5"
+              strokeLinecap="round"
+              opacity="0.9"
+            />
+            <path
+              d="M39 49 A24 24 0 0 0 15 25"
+              stroke={scrolled ? "#0B1F3A" : "#F5F3EE"}
+              strokeWidth="5"
+              strokeLinecap="round"
+              opacity="0.55"
+            />
+            <path
+              d="M50 49 A35 35 0 0 0 15 14"
+              stroke={scrolled ? "#0B1F3A" : "#F5F3EE"}
+              strokeWidth="5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <circle cx="15" cy="49" r="6.5" fill="#E2683C" />
+          </svg>
+          <span
+            className="font-serif text-2xl font-medium tracking-tight"
+            style={{ fontFamily: "var(--font-serif)", color: "var(--ink)" }}
+          >
+            tapiko
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
@@ -62,13 +98,14 @@ export function Nav() {
             aria-expanded={open}
             className="rounded-full border border-[color:var(--stone)] p-2 text-[color:var(--ink)] md:hidden"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               {open ? (
-                <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
+                <path d="M6 6l12 12M18 6L6 18" />
               ) : (
                 <>
-                  <path d="M4 8h16" strokeLinecap="round" />
-                  <path d="M4 16h16" strokeLinecap="round" />
+                  <line x1="4" y1="6" x2="20" y2="6" />
+                  <line x1="4" y1="12" x2="20" y2="12" />
+                  <line x1="4" y1="18" x2="20" y2="18" />
                 </>
               )}
             </svg>

@@ -8,18 +8,20 @@ export function Hero() {
       id="top"
       className="relative overflow-x-hidden pt-32 pb-16 sm:pt-40 sm:pb-24 lg:min-h-[92vh] lg:pb-32"
     >
-      {/* NFC wave / ripple motif — 4 concentric arcs, aria-hidden, purely decorative */}
+      {/* Brand wave — section 07 radiating arcs, aria-hidden, purely decorative */}
       <svg
         aria-hidden
-        className="pointer-events-none absolute left-[-6rem] top-[12%] -z-10 w-[min(72vw,640px)] text-[color:var(--terra)]"
-        viewBox="0 0 640 640"
+        className="pointer-events-none absolute left-0 bottom-0 -z-10 w-[min(55vw,480px)] text-[color:var(--terra)]"
+        viewBox="0 0 600 220"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMinYMax meet"
       >
-        <circle cx="60" cy="320" r="120" stroke="currentColor" strokeWidth="1.5" opacity="0.07" />
-        <circle cx="60" cy="320" r="220" stroke="currentColor" strokeWidth="1.5" opacity="0.06" />
-        <circle cx="60" cy="320" r="320" stroke="currentColor" strokeWidth="1.5" opacity="0.05" />
-        <circle cx="60" cy="320" r="420" stroke="currentColor" strokeWidth="1.5" opacity="0.04" />
+        <path d="M0 220 A90 90 0 0 0 90 130"   stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.13" />
+        <path d="M0 220 A150 150 0 0 0 150 70"  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.08" />
+        <path d="M0 220 A210 210 0 0 0 210 10"  stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.055" />
+        <path d="M0 220 A270 270 0 0 0 270 -50" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.035" />
+        <circle cx="0" cy="220" r="5" fill="currentColor" opacity="0.18" />
       </svg>
 
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-10 lg:px-10">

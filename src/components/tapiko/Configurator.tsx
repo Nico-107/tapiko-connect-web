@@ -20,6 +20,36 @@ class WebGLBoundary extends Component<{ children: ReactNode; fallback: ReactNode
   render() { return this.state.hasError ? this.props.fallback : this.props.children; }
 }
 
+// ── Brand icon SVGs (section 06 of brand sheet) ──────────────────────────────
+const BrandReview = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 3.5l2.4 5 5.4.7-3.9 3.9.9 5.5-4.8-2.6-4.8 2.6.9-5.5-3.9-3.9 5.4-.7z" />
+  </svg>
+);
+const BrandFollow = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 20.5c-4-2.7-8.5-6.3-8.5-10.7A4.8 4.8 0 0112 6.7a4.8 4.8 0 018.5 3.1c0 4.4-4.5 8-8.5 10.7z" />
+  </svg>
+);
+const BrandShare = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="6" cy="12" r="2.2" /><circle cx="18" cy="6" r="2.2" /><circle cx="18" cy="18" r="2.2" />
+    <line x1="8" y1="11" x2="16" y2="7.2" /><line x1="8" y1="13" x2="16" y2="16.8" />
+  </svg>
+);
+const BrandMenu = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2" />
+    <line x1="8" y1="8" x2="16" y2="8" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="8" y1="16" x2="13" y2="16" />
+  </svg>
+);
+const BrandContactless = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9.5 18A6 6 0 0110 8.7" opacity="0.9" /><path d="M12.5 20A9.5 9.5 0 0113 5.8" opacity="0.55" />
+    <circle cx="7" cy="19" r="1.8" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 // ── i18n key maps (handles hyphens in shape/font keys) ────────────────────────
 const SHAPE_I18N: Record<ShapeKey, string> = {
   "classic":     "configurator.shape.classic",
@@ -36,10 +66,10 @@ const FONT_FAMILY_CSS: Record<FontOption, string> = {
 const FONT_WEIGHT_CSS: Record<FontOption, string> = {
   modern: "500", serif: "400", rounded: "600", bold: "800",
 };
-const ICON_GLYPH: Record<IconOption, string> = {
+const ICON_GLYPH: Record<IconOption, ReactNode> = {
   maps: "📍", google: "🔵", instagram: "📷", tiktok: "♪",
-  menu: "☰",  website: "🌐", review: "⭐", message: "💬",
-  social: "❤", share: "↑",
+  menu: <BrandMenu />, website: "🌐", review: <BrandReview />, message: "💬",
+  social: <BrandFollow />, share: <BrandShare />,
 };
 
 // ── Primitive UI components ───────────────────────────────────────────────────
